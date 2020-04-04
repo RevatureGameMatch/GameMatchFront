@@ -1,7 +1,7 @@
 <div class="d-flex flex-column outer-container">
   <nav class="navbar bg-dark d-flex flex-column">
     <div class="container">
-      <a id="title" class="navbar-brand text-light">{{title}}</a>
+      <a id="title" routerLink="/home" class="navbar-brand text-light">{{titleAbbreviated}}</a>
       <div>
         <a routerLink="/signup" class="btn btn-outline-primary text-primary m-2">Sign Up</a>
         <a routerLink="/login" class="btn btn-primary m-2"><strong>Login</strong></a>
@@ -9,24 +9,7 @@
     </div>
   </nav>
 
-  <div class="container text-center text-light">
-    <div class="row justify-content-center mt-3">
-      <div class="col">
-        <h1>Game to Gain</h1>
-        <hr>
-      </div>
-    </div>
-    <div class="row mt-5">
-      <div class="col-6 text-center mt-5">
-        <h2>Join Games,</h2>
-        <h2>Build Soft Skills!</h2>
-        <a routerLink="/about" class="btn btn-outline-light text-light m-2">Learn more</a>
-      </div>
-      <div class="col-6 mt-5">
-        <h3>Players Online:</h3>
-      </div>
-    </div>
-  </div>
+  <router-outlet></router-outlet>
   
   <footer class="container">
     <div class="fixed-bottom text-light text-center bg-dark">Designed by Kayla Filio, Philip Lawrence, and Nancy Yuan.</div>

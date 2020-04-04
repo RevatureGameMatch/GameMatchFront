@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
+import { User } from './models/users';
+import { StorageMap } from '@ngx-pwa/local-storage';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'G2G';
+  titleAbbreviated = 'G2G';
+  user: Observable<typeof User>;
+
+  constructor(private storage: StorageMap) {}
+
+  ngOnInit(): void{
+    // @ts-ignore
+    this.user = this.storage.get<User>('currentUser');
+  }
 }
