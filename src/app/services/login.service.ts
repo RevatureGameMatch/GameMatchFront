@@ -12,8 +12,8 @@ export class LoginService {
 
   login(username: string, password: string): Observable<User>{
     let loginTemplate = {
-      username: username,
-      password: password,
+      playerUsername: username,
+      playerPassword: password,
     }
     return this.http.post<User>("http://localhost:8080/g2g/PlayerLogin", loginTemplate);
   }
