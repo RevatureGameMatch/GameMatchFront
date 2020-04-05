@@ -1,1 +1,25 @@
-<p class="text-light">login works!</p>
+<div class="container text-center text-light">
+    <div class="row justify-content-center mt-3">
+        <div class="col">
+            <h1>Login</h1>
+            <hr>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <form id="login-form" name="form" class="text-left" action="login" method="POST">
+            <div class="form-group">
+                <label for="username-input">Username</label>
+                <input type="text" class="form-control" name="username" placeholder="Username" size="45">
+            </div>
+            <div class="form-group mt-3">
+                <label for="password-input">Password</label>
+                <input type="password" class="form-control" name="password" placeholder="Password" size="45">
+            </div>
+        </form>
+    </div>
+    <div class="row justify-content-center p-4">
+        <div class="col-5">
+            <button type="submit" class="btn btn-primary btn-block" id="login-btn" onclick="sendData()">Login</button>
+        </div>
+    </div>
+</div>
