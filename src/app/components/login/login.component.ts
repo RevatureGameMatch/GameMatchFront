@@ -27,12 +27,12 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(loginTemplate): void {
-    let input = this.loginService.login(loginTemplate.playerUsername, loginTemplate.playerPassword)
+    let input = this.loginService.login(loginTemplate.username, loginTemplate.password)
       .subscribe(input => {
         this.storage.set('currentUser', input);
       });
     this.loginForm.reset();
-    console.log(this.storage.get<User>('currentUser'))
+    console.log(this.storage.get<User>('currentUser'));
   }
 
 }

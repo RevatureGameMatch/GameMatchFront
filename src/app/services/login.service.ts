@@ -15,6 +15,7 @@ export class LoginService {
       playerUsername: username,
       playerPassword: password,
     }
+    console.log(loginTemplate);
     return this.http.post<User>("http://localhost:8080/g2g/PlayerLogin", loginTemplate);
   }
 }
