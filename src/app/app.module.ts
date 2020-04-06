@@ -9,6 +9,7 @@ import { AboutG2GComponent } from './components/about-g2-g/about-g2-g.component'
 import { CreateAccountComponent } from './components/create-account/create-account.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { HomeComponent } from './components/home/home.component';
     CreateAccountComponent,
     LoginComponent,
     HomeComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,

@@ -3,7 +3,7 @@
     <div class="container">
       <a id="title" routerLink="/home" class="navbar-brand text-light">{{titleAbbreviated}}</a>
       <div *ngIf="user | async as jsonUser; else login">
-        <a routerLink="/logout" class="btn btn-outline-light text-primary m-2">Logout</a>
+        <a (click)="logout()" class="btn btn-outline-light text-light m-2">Logout</a>
       </div>
       <ng-template #login>
         <div>
