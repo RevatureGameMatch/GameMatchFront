@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   password = new FormControl('', Validators.required);
 
   constructor(
-    private storage: LocalStorage,
+    private storage: StorageMap,
     private loginService: LoginService,
     private formBuilder: FormBuilder,
     private router: Router) {
@@ -35,13 +35,12 @@ export class LoginComponent implements OnInit {
   onSubmit(loginTemplate): void {
     let input = this.loginService.login(loginTemplate.username, loginTemplate.password)
       .subscribe(input => {
-        this.storage.setItem('currentUser', input).subscribe(() => {
+        this.storage.set('currentUser', input).subscribe(() => {
           location.assign('/dashboard');
         });
          
       });
     this.loginForm.reset();
-    console.log(this.storage.getItem<User>('currentUser'));
   }
 
 }

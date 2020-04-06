@@ -14,17 +14,17 @@ export class AppComponent {
   user: Observable<typeof User>;
 
   constructor(
-    private storage: LocalStorage,
+    private storage: StorageMap,
     private router: Router,
     ) {}
 
   ngOnInit(): void{
     // @ts-ignore
-    this.user = this.storage.getItem<User>('currentUser');
+    this.user = this.storage.get<User>('currentUser');
   }
 
   logout(): void{
-    this.storage.removeItem('currentUser').subscribe(() => {
+    this.storage.delete('currentUser').subscribe(() => {
       location.assign('/home');
     });
 

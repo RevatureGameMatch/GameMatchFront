@@ -9,10 +9,12 @@ import { StorageMap, LocalStorage } from '@ngx-pwa/local-storage';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private storage: LocalStorage) { }
+  user = this.storage.get<User>('currentUser').subscribe((user) => {
+    console.log(user);
+  });
+
+  constructor(private storage: StorageMap) { }
 
   ngOnInit(): void {
-    console.log(this.storage.getItem<User>('currentUser'));
   }
-
 }
