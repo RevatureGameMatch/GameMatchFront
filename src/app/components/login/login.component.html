@@ -8,19 +8,27 @@
     </div>
     <div class="row justify-content-center">
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)" class="text-left">
+
             <div class="form-group">
-                <label for="username-input">Username</label>
-                <input type="text" class="form-control" formControlName="username" placeholder="Username" size="45"
-                    required>
+                <label for="username">Username</label>
+                <input type="text" class="form-control" formControlName="username" placeholder="Username" size="45">
+                <span class="text-danger" *ngIf="(username.dirty || username.touch) && username.invalid && username.errors.required">
+                    Username is required.
+                </span>
             </div>
+
             <div class="form-group mt-3">
-                <label for="password-input">Password</label>
-                <input type="password" class="form-control" formControlName="password" placeholder="Password" size="45"
-                    required>
+                <label for="password">Password</label>
+                <input type="password" class="form-control" formControlName="password" placeholder="Password" size="45">
+                <span class="text-danger" *ngIf="(password.dirty || password.touch) && password.invalid && password.errors.required">
+                    Password is required.
+                </span>
             </div>
+
             <div class="row justify-content-center p-4">
-                <button type="submit" class="btn btn-primary btn-block" id="login-btn">Login</button>
+                <button type="submit" class="btn btn-primary btn-block" [disabled]="!loginForm.valid">Login</button>
             </div>
+
         </form>
     </div>
 </div>
