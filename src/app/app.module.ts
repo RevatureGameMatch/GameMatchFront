@@ -11,7 +11,7 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CreateRoomComponent } from './components/create-room/create-room.component';
-import { JoinRoomComponent } from './components/join-room/join-room.component';
+import { ViewRoomsComponent } from './components/view-rooms/view-rooms.component';
 import { SurveysComponent } from './components/surveys/surveys.component';
 
 @NgModule({
@@ -23,7 +23,7 @@ import { SurveysComponent } from './components/surveys/surveys.component';
     HomeComponent,
     DashboardComponent,
     CreateRoomComponent,
-    JoinRoomComponent,
+    ViewRoomsComponent,
     SurveysComponent,
   ],
   imports: [

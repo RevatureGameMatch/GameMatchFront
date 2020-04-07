@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { JoinRoomComponent } from './join-room.component';
+import { ViewRoomsComponent } from './view-rooms.component';
 
-describe('JoinRoomComponent', () => {
-  let component: JoinRoomComponent;
-  let fixture: ComponentFixture<JoinRoomComponent>;
+describe('ViewRoomsComponent', () => {
+  let component: ViewRoomsComponent;
+  let fixture: ComponentFixture<ViewRoomsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ JoinRoomComponent ]
+      declarations: [ ViewRoomsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(JoinRoomComponent);
+    fixture = TestBed.createComponent(ViewRoomsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
