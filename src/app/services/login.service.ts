@@ -16,6 +16,6 @@ export class LoginService {
       playerPassword: password,
     }
     console.log(loginTemplate);
-    return this.http.post<User>("http://localhost:8080/g2g/PlayerLogin", loginTemplate);
+    return this.http.post<User>("http://www.revatureprojects.com:8085/g2g/PlayerLogin", loginTemplate);
   }
 }
