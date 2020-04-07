@@ -8,6 +8,8 @@ import { User } from '../models/users';
 })
 export class LoginService {
 
+  url = "http://www.revatureprojects.com:8085/g2g/PlayerLogin";
+
   constructor(private http: HttpClient) { }
 
   login(username: string, password: string): Observable<User>{
@@ -16,6 +18,6 @@ export class LoginService {
       playerPassword: password,
     }
     console.log(loginTemplate);
-    return this.http.post<User>("http://www.revatureprojects.com:8085/g2g/PlayerLogin", loginTemplate);
+    return this.http.post<User>(this.url, loginTemplate);
   }
 }

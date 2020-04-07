@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ViewRoomsService } from 'src/app/services/view-rooms.service';
 
 @Component({
   selector: 'app-join-room',
@@ -12,7 +13,5 @@ export class ViewRoomsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  viewCasualRooms() {
-    
-  }
+
 }
