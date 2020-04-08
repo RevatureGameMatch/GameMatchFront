@@ -2,9 +2,14 @@
   <nav class="navbar bg-dark d-flex flex-column">
     <div class="container">
       <a id="title" routerLink="/home" class="navbar-brand text-light">{{titleAbbreviated}}</a>
+
       <div *ngIf="user | async as jsonUser; else login">
-        <a routerLink="/logout" class="btn btn-outline-light text-primary m-2">Logout</a>
+        <span class="m-2">
+          <a routerLink="/dashboard">Dashboard</a>
+        </span>
+        <a (click)="logout()" class="btn btn-outline-light text-light m-2">Logout</a>
       </div>
+
       <ng-template #login>
         <div>
           <a routerLink="/signup" class="btn btn-outline-primary text-primary m-2">Sign Up</a>
