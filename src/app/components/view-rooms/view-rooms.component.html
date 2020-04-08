@@ -1,10 +1,49 @@
-<div class="container text-center text-light">
+<div class="container text-light">
     <div class="row justify-content-center mt-3">
-      <div class="col">
-        <h1>Join Room</h1>
-        <hr>
+
+      <div class="col-4">
+        <a class="btn dropdown-item">Filter By Game</a>
       </div>
+
+      <div class="col-4 text-center">
+        <h2>Available Rooms</h2>
+      </div>
+
+      <div class="col-4">
+        <nav aria-label="...">
+          <ul class="pagination justify-content-end">
+            <li class="page-item">
+              <a class="page-link bg-dark" href="#" tabindex="-1" aria-disabled="true">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            <li class="page-item"><a class="page-link bg-dark text-light" href="#">1</a></li>
+            <li class="page-item"><a class="page-link bg-dark text-light" href="#">2</a></li>
+            <li class="page-item"><a class="page-link bg-dark text-light" href="#">3</a></li>
+            <li class="page-item">
+              <a class="page-link bg-dark" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      
     </div>
+</div>
 
-
+<div class="container text-light mt-1">
+    <div class="row justify-content-center">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col"># of Players</th>
+            <th scope="col">Game</th>
+            <th scope="col">Room Description</th>
+            <th scope="col">Room Owner</th>
+            <th scope="col">Playstyle</th>
+          </tr>
+        </thead>
+      </table>
+    </div>
 </div>

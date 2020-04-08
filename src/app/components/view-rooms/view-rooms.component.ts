@@ -13,5 +13,5 @@ export class ViewRoomsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
+  
 }
