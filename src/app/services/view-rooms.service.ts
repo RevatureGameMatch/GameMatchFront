@@ -1,25 +1,26 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Room } from '../models/room';
+import { User } from '../models/users';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ViewRoomsService {
 
-  url = "http://www.revatureprojects.com:8085/g2g/Room";
+  url = "http://www.revatureprojects.com:8085/g2g/Rooms";
 
   constructor(private http: HttpClient) { }
 
-  getCasualRooms() {
-    return this.http.get<Room>(this.url + "/casual");
+  getCasualRooms(user: User) {
+    return this.http.post<Room[]>(this.url + "/Casual", user);
   }
 
-  getSeriousRooms() {
-    return this.http.get<Room>(this.url + "/serious");
+  getSeriousRooms(user: User) {
+    return this.http.post<Room[]>(this.url + "/Serious", user);
   }
 
-  getHybridRooms() {
-    return this.http.get<Room>(this.url + "/hybrid");
+  getHybridRooms(user: User) {
+    return this.http.post<Room[]>(this.url + "/Hybrid", user);
   }
 }
