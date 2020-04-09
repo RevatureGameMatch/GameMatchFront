@@ -25,23 +25,39 @@ export class ViewRoomsComponent implements OnInit {
     this.user$ = this.storage.get<User>('currentUser');
     this.user$.subscribe(
       (result) => {
-        this.user = result;
+        this.user = result
+        console.log(this.user);
       }
     );
   }
   
   viewCasualRooms() {
     this.style = "casual";
+    this.viewService.getCasualRooms(this.user).subscribe(
+      (result) => {
+        console.log(result);
+      }
+    )
     this.rooms$ = this.viewService.getCasualRooms(this.user);
   }
 
   viewSeriousRooms() {
     this.style = "serious";
+    this.viewService.getCasualRooms(this.user).subscribe(
+      (result) => {
+        console.log(result);
+      }
+    )
     return this.viewService.getSeriousRooms(this.user);
   }
 
   viewHybridRooms() {
     this.style = "hybrid";
+    this.viewService.getCasualRooms(this.user).subscribe(
+      (result) => {
+        console.log(result);
+      }
+    )
     return this.viewService.getHybridRooms(this.user);
   }
 
