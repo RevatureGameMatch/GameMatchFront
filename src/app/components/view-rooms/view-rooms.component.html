@@ -20,64 +20,57 @@
 </div>
 
 <div class="container text-light" *ngIf="style">
-<div class="row justify-content-center mt-3">
+  <div class="row justify-content-center mt-3">
 
-  <div class="col-4">
-    <a class="btn dropdown-item">Filter By Game</a>
+    <div class="col-4">
+      <a class="btn dropdown-item">Filter By Game</a>
+    </div>
+
+    <div class="col-4 text-center">
+      <h2>Available Rooms</h2>
+    </div>
+
+    <div class="col-4">
+      <nav aria-label="...">
+        <ul class="pagination justify-content-end">
+          <li class="page-item">
+            <a class="page-link bg-dark" href="#" tabindex="-1" aria-disabled="true">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li class="page-item"><a class="page-link bg-dark text-light" href="#">1</a></li>
+          <li class="page-item"><a class="page-link bg-dark text-light" href="#">2</a></li>
+          <li class="page-item"><a class="page-link bg-dark text-light" href="#">3</a></li>
+          <li class="page-item">
+            <a class="page-link bg-dark" href="#" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
   </div>
 
-  <div class="col-4 text-center">
-    <h2>Available Rooms</h2>
+  <div class="row justify-content-center">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col"># of Players</th>
+          <th scope="col">Game</th>
+          <th scope="col">Room Description</th>
+          <th scope="col">Room Owner</th>
+          <th scope="col">Playstyle</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let room of rooms$ | async">
+          <td>{{ room.roomId }}</td>
+          <td>{{ room.created }}</td>
+          <td>{{ room.description }}</td>
+          <td>{{ room.status }}</td>
+          <td>{{ room.style }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-
-  <div class="col-4">
-    <nav aria-label="...">
-      <ul class="pagination justify-content-end">
-        <li class="page-item">
-          <a class="page-link bg-dark" href="#" tabindex="-1" aria-disabled="true">
-            <span aria-hidden="true">&laquo;</span>
-          </a>
-        </li>
-        <li class="page-item"><a class="page-link bg-dark text-light" href="#">1</a></li>
-        <li class="page-item"><a class="page-link bg-dark text-light" href="#">2</a></li>
-        <li class="page-item"><a class="page-link bg-dark text-light" href="#">3</a></li>
-        <li class="page-item">
-          <a class="page-link bg-dark" href="#" aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </div>
-</div>
-
-<!-- <ul>
-  <p>made it here!</p>
-  <li *ngFor="let room of rooms$ | async">
-    {{ room.roomId }}
-  </li>
-</ul> -->
-
-<div class="row justify-content-center">
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th scope="col"># of Players</th>
-        <th scope="col">Game</th>
-        <th scope="col">Room Description</th>
-        <th scope="col">Room Owner</th>
-        <th scope="col">Playstyle</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let room of rooms$ | async">
-        <td>{{ room.roomId }}</td>
-        <td>{{ room.created }}</td>
-        <td>{{ room.description }}</td>
-        <td>{{ room.status }}</td>
-        <td>{{ room.style }}</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
 </div>

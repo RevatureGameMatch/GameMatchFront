@@ -15,7 +15,6 @@ export class ViewRoomsComponent implements OnInit {
   user$: Observable<User>;
   style: String;
   rooms$: Observable<Room[]>;
-  rooms: Room[];
 
   constructor(
     private viewService: ViewRoomsService,
@@ -27,27 +26,22 @@ export class ViewRoomsComponent implements OnInit {
     this.user$.subscribe(
       (result) => {
         this.user = result;
-        console.log(this.user)
       }
     );
   }
   
   viewCasualRooms() {
     this.style = "casual";
-    console.log(this.style);
-
     this.rooms$ = this.viewService.getCasualRooms(this.user);
   }
 
   viewSeriousRooms() {
     this.style = "serious";
-    console.log(this.style);
     return this.viewService.getSeriousRooms(this.user);
   }
 
   viewHybridRooms() {
     this.style = "hybrid";
-    console.log(this.style);
     return this.viewService.getHybridRooms(this.user);
   }
 

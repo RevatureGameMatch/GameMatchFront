@@ -9,8 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class ViewRoomsService {
 
-  // url = "http://www.revatureprojects.com:8085/g2g/Rooms";
-  url = "http://localhost:8080/g2g/Rooms";
+  url = "http://www.revatureprojects.com:8085/g2g/Rooms";
 
   constructor(private http: HttpClient) { }
 
