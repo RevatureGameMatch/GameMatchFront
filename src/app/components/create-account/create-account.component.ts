@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountForm } from 'src/app/models/account-form';
 import { CreateAccountService } from 'src/app/services/create-account.service';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-create-account',
@@ -9,23 +10,42 @@ import { CreateAccountService } from 'src/app/services/create-account.service';
 })
 export class CreateAccountComponent implements OnInit {
 
-  newEmail: string;
-  newUsername: string;
-  newPassword: string;
+  accForm: FormGroup;
 
-  constructor(private cas: CreateAccountService) {}
+  username = new FormControl('', Validators.required);
+  password = new FormControl('', Validators.required);
+  email = new FormControl('', Validators.required);
+
+  AccountForm: AccountForm;
+
+  expanded: boolean;
+
+  constructor(private cas: CreateAccountService, private formBuilder: FormBuilder) {
+    this.accForm = this.formBuilder.group({
+
+      email: this.email,
+      username: this.username,
+      password: this.password
+
+    })
+
+  }
 
   ngOnInit(): void {
+    this.expanded = false;
   }
 
   onSubmit() {
-    let a = new AccountForm(this.newEmail, this.newUsername, this.newPassword)
-    this.cas.createAccount(a).subscribe(
-      (response: AccountForm) => {
-        a = response;
-      }
-    )
-
+    let a = new AccountForm(this.accForm.value.username, this.accForm.value.email, this.accForm.value.password)
+     this.cas.createAccount(a);
+     //.subscribe(
+    //   (response: AccountForm) => {
+    //     this.AccountForm = response;
+    //   }
+    // )
+      this.accForm.reset();
+      this.expanded = true;
+      //location.assign('/login');
   }
 
 }

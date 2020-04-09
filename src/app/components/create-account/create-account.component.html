@@ -1,24 +1,54 @@
 <br/>
-<div class="container">
-    <h1 class="text-light">Sign Up:</h1>
-    <form (ngSubmit)="onSubmit()" #AccountForm="ngForm">
+<div *ngIf="expanded == false" class="container text-center text-light">
+  <div class="row justify-content-center m-3"> 
+    <div class="col"><h1 class="text-light">Sign Up:</h1></div>
+  </div>
+    <div class="row justify-content-center">
+    <form (ngSubmit)="onSubmit()" [formGroup]="accForm">
 
       <div class="form-group">
         <label class="text-light" for="email">Email:</label>
-        <input type="text" class="form-control" id="email" required>
+        <input type="text" class="form-control" formControlName="email" name="email" id="email" size="45" required>
+        <span class="text-danger" *ngIf="(email.dirty || email.touched) && email.invalid && email.errors.required">
+          Email is required.
+      </span>
       </div>
 
       <div class="form-group">
         <label class="text-light" for="username">Username:</label>
-        <input type="text" class="form-control" id="username" required>
+        <input type="text" class="form-control" formControlName="username" name="username" id="username" size="45" required>
+        <span class="text-danger" *ngIf="(username.dirty || username.touched) && username.invalid && username.errors.required">
+          Username is required.
+      </span>
       </div>
 
       <div class="form-group">
         <label class="text-light" for="password">Password:</label>
-        <input type="text" class="form-control" id="password" required>
+        <input type="password" class="form-control" formControlName="password" name="password" id="password" size="45" required>
+        <span class="text-danger" *ngIf="(password.dirty || password.touched) && password.invalid && password.errors.required">
+          Password is required.
+      </span>
+      </div>
+      <div class="row justify-content-center p-4">
+      <button type="submit" class="btn btn-primary btn-block" [disabled]="!accForm.valid">Submit</button>
       </div>
 
-      <button type="submit" class="btn btn-success">Submit</button>
-
     </form>
-</div> 
+    </div>
+</div>
+
+
+    <div *ngIf="expanded == true" class="container justify-content-center text-light">
+      <div class="col-md-4 col-centered">
+      <div class="row">
+      <h2 class="text-light" style="text-align:center">You have sucessfully created an account!</h2>
+      </div>
+      <a routerLink="/login">
+        <div class="row justify-content-center p-4">
+      <button class="btn btn-primary btn-block" size="45">Login</button>
+        </div>
+      </a>
+      
+      </div>
+      </div>
+    
