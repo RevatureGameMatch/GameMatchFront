@@ -43,22 +43,22 @@ export class ViewRoomsComponent implements OnInit {
 
   viewSeriousRooms() {
     this.style = "serious";
-    this.viewService.getCasualRooms(this.user).subscribe(
+    this.viewService.getSeriousRooms(this.user).subscribe(
       (result) => {
         console.log(result);
       }
     )
-    return this.viewService.getSeriousRooms(this.user);
+    this.rooms$ = this.viewService.getSeriousRooms(this.user);
   }
 
   viewHybridRooms() {
     this.style = "hybrid";
-    this.viewService.getCasualRooms(this.user).subscribe(
+    this.viewService.getHybridRooms(this.user).subscribe(
       (result) => {
         console.log(result);
       }
     )
-    return this.viewService.getHybridRooms(this.user);
+    this.rooms$ = this.viewService.getHybridRooms(this.user);
   }
 
 }

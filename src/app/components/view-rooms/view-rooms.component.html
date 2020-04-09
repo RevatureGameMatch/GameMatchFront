@@ -56,19 +56,18 @@
       <thead>
         <tr>
           <th scope="col"># of Players</th>
+          <th scope="col">Max Players</th>
           <th scope="col">Game</th>
           <th scope="col">Room Description</th>
-          <th scope="col">Room Owner</th>
           <th scope="col">Playstyle</th>
         </tr>
       </thead>
       <tbody>
-        <!-- TODO: fix these inputs -->
         <tr *ngFor="let room of rooms$ | async">
-          <td>{{ room.roomId }}</td>
-          <td>{{ room.created }}</td>
+          <td>{{ room.currentPlayers }}</td>
+          <td>{{ room.maxPlayers }}</td>
+          <td>{{ room.game.name }}</td>
           <td>{{ room.description }}</td>
-          <td>{{ room.status }}</td>
           <td>{{ room.style }}</td>
         </tr>
       </tbody>
