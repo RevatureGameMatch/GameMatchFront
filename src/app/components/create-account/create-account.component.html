@@ -7,6 +7,12 @@
     </div>
   </div>
 
+  <div *ngIf="usernameExists == true">
+    <div class="row justify-content-center">
+        <div class="alert alert-danger col-5">Username already exists.</div>
+    </div>
+  </div>
+
   <div class="row justify-content-center">
     <form (ngSubmit)="onSubmit()" [formGroup]="accForm" class="text-left">
 

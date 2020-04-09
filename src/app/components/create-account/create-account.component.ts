@@ -19,6 +19,7 @@ export class CreateAccountComponent implements OnInit {
   AccountForm: AccountForm;
 
   expanded: boolean;
+  usernameExists: boolean;
 
   constructor(private cas: CreateAccountService, private formBuilder: FormBuilder) {
     this.accForm = this.formBuilder.group({
@@ -33,15 +34,19 @@ export class CreateAccountComponent implements OnInit {
 
   ngOnInit(): void {
     this.expanded = false;
+    this.usernameExists = false;
   }
 
   onSubmit() {
     let a = new AccountForm(this.accForm.value.username, this.accForm.value.email, this.accForm.value.password, 'PLAYER')
      this.cas.createAccount(a).subscribe(
-      input => {}
-        );
-      this.accForm.reset();
-      this.expanded = true;
+      (input) => { 
+        this.expanded = true; 
+      },
+      (error) => {
+        this.usernameExists = true;
+      }
+    );
+    this.accForm.reset();  
   }
-
 }
