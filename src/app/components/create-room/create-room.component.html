@@ -8,13 +8,13 @@
 
       <div class="form-group">
         <label class="text-light" for="desc">Room Description:</label>
-        <input type="text" class="form-control" formControlName="desc" placeholder="250 characters max" name="desc" id="desc" size="45" maxLength="250" required>
+        <textarea rows="5" wrap="soft" cols="45" class="form-control" formControlName="desc" placeholder="250 characters max" name="desc" id="desc" maxLength="250" required></textarea>
         <span class="text-danger" *ngIf="(desc.dirty || desc.touched) && desc.invalid && desc.errors.required">
           Room Description is required.
       </span>
       </div>
 
-      <div class="form-group">
+      <div class="form-group" size="45">
         <label class="text-light" for="game">Game:</label>
         <select class="custom-select" (change)="changeGame($event)" formControlName="game">
             <option value="" selected disabled hidden>Choose your game</option>
@@ -25,7 +25,7 @@
         </span>
       </div>
 
-      <div class="form-group">
+      <div class="form-group" size="45">
         <label class="text-light" for="style">Play Style:</label>
         <select class="custom-select" (change)="changeStyle($event)" formControlName="style">
             <option value="" selected disabled hidden>Choose your play style</option>
@@ -36,7 +36,7 @@
         </span>
       </div>
 
-      <div class="form-group">
+      <div class="form-group" size="45">
         <label class="text-light" for="maxP">Max Number of Players:</label>
         <input type="number" min="1" step="1" max="10" class="form-control" formControlName="maxP"  name="maxP" id="maxP" size="45" required>
         <span class="text-danger" *ngIf="(maxP.dirty || maxP.touched) && maxP.invalid && maxP.errors.required">
