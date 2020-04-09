@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
+  expanded: boolean;
 
   // Validates that username and password entries are not null
   username = new FormControl('', Validators.required);
@@ -30,6 +31,7 @@ export class LoginComponent implements OnInit {
      }
 
   ngOnInit(): void {
+    this.expanded = false;
   }
 
   onSubmit(loginTemplate): void {
@@ -41,6 +43,7 @@ export class LoginComponent implements OnInit {
          
       });
     this.loginForm.reset();
+    this.expanded = true;
   }
 
 }
