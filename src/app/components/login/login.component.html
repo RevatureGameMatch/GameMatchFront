@@ -1,11 +1,18 @@
 <div class="container text-center text-light">
+
     <div class="row justify-content-center m-3">
         <div class="col">
             <h1>Login</h1>
             <hr>
-
         </div>
     </div>
+
+    <div *ngIf="expanded == true">
+        <div class="row justify-content-center">
+            <div class="alert alert-danger" size="45">Invalid username or password. Please try again.</div>
+        </div>
+    </div>
+
     <div class="row justify-content-center">
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)" class="text-left">
 
@@ -32,3 +39,4 @@
         </form>
     </div>
 </div>
+
