@@ -15,4 +15,8 @@ export class CreateRoomService {
     return this.http.post<Room>('http://www.revatureprojects.com:8085/g2g/___', r);
   }
 
+  getGames() {
+   return this.http.get<String[]>('http://www.revatureprojects.com:8085/g2g/___');   
+  }
+
 }

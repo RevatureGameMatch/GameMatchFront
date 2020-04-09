@@ -1,1 +1,53 @@
-<p class="text-light">create-room works!</p>
+<br/>
+<div class="container text-center text-light">
+  <div class="row justify-content-center m-3"> 
+    <div class="col"><h1 class="text-light">Create a New Room:</h1></div>
+  </div>
+    <div class="row justify-content-center">
+    <form (ngSubmit)="onSubmit()" [formGroup]="roomForm" class="text-left">
+
+      <div class="form-group">
+        <label class="text-light" for="desc">Room Description:</label>
+        <input type="text" class="form-control" formControlName="desc" placeholder="250 characters max" name="desc" id="desc" size="45" maxLength="250" required>
+        <span class="text-danger" *ngIf="(desc.dirty || desc.touched) && desc.invalid && desc.errors.required">
+          Room Description is required.
+      </span>
+      </div>
+
+      <div class="form-group">
+        <label class="text-light" for="game">Game:</label>
+        <select class="custom-select" (change)="changeGame($event)" formControlName="game">
+            <option value="" selected disabled hidden>Choose your game</option>
+            <option *ngFor="let game of Game" [ngValue]="game">{{game}}</option>
+         </select>
+         <span class="text-danger" *ngIf="(game.dirty || game.touched) && game.invalid && game.errors.required">
+            Game is required.
+        </span>
+      </div>
+
+      <div class="form-group">
+        <label class="text-light" for="style">Play Style:</label>
+        <select class="custom-select" (change)="changeStyle($event)" formControlName="style">
+            <option value="" selected disabled hidden>Choose your play style</option>
+            <option *ngFor="let style of Style" [ngValue]="style">{{style}}</option>
+         </select>
+         <span class="text-danger" *ngIf="(style.dirty || style.touched) && style.invalid && style.errors.required">
+            Play style is required.
+        </span>
+      </div>
+
+      <div class="form-group">
+        <label class="text-light" for="maxP">Max Number of Players:</label>
+        <input type="number" min="1" step="1" max="10" class="form-control" formControlName="maxP"  name="maxP" id="maxP" size="45" required>
+        <span class="text-danger" *ngIf="(maxP.dirty || maxP.touched) && maxP.invalid && maxP.errors.required">
+            Min number of players must be 1.
+        </span>
+    </div>
+
+      <div class="row justify-content-center p-4">
+      <button type="submit" class="btn btn-primary btn-block" [disabled]="!roomForm.valid">Submit</button>
+      </div>
+
+    </form>
+    </div>
+</div>
