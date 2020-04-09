@@ -13,7 +13,6 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CreateRoomComponent } from './components/create-room/create-room.component';
 import { ViewRoomsComponent } from './components/view-rooms/view-rooms.component';
 import { SurveysComponent } from './components/surveys/surveys.component';
-import { PlaystyleComponent } from './components/playstyle/playstyle.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +25,6 @@ import { PlaystyleComponent } from './components/playstyle/playstyle.component';
     CreateRoomComponent,
     ViewRoomsComponent,
     SurveysComponent,
-    PlaystyleComponent,
   ],
   imports: [
     BrowserModule,
