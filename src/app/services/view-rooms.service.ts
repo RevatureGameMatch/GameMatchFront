@@ -2,13 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Room } from '../models/room';
 import { User } from '../models/users';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ViewRoomsService {
 
-  url = "http://www.revatureprojects.com:8085/g2g/Rooms";
+  // url = "http://www.revatureprojects.com:8085/g2g/Rooms";
+  url = "http://localhost:8080/g2g/Rooms";
 
   constructor(private http: HttpClient) { }
 

@@ -10,6 +10,7 @@ import { StorageMap } from '@ngx-pwa/local-storage';
 })
 export class PlaystyleComponent implements OnInit {
   user;
+  style;
 
   constructor(
     private viewService: ViewRoomsService,
@@ -19,16 +20,36 @@ export class PlaystyleComponent implements OnInit {
     this.user = this.storage.get<User>('currentUser');
   }
 
-  viewCasualRooms(user: User) {
-    this.viewService.getCasualRooms(user);
+  viewRooms(style: String) {
+    console.log(style);
+    if (style = "casual") {
+      this.viewCasualRooms();
+    }
+    if (style = "serious") {
+      this.viewSeriousRooms();
+    }
+    if (style = "hybrid") {
+      this.viewHybridRooms();
+    }
   }
 
-  viewSeriousRooms(user: User) {
-    this.viewService.getSeriousRooms(user);
+  
+  viewCasualRooms() {
+    this.style = "casual";
+    console.log(this.style);
+    this.viewService.getCasualRooms(this.user);
   }
 
-  viewHybridRooms(user: User) {
-    this.viewService.getHybridRooms(user);
+  viewSeriousRooms() {
+    this.style = "serious";
+    console.log(this.style);
+    this.viewService.getSeriousRooms(this.user);
+  }
+
+  viewHybridRooms() {
+    this.style = "hybrid";
+    console.log(this.style);
+    this.viewService.getHybridRooms(this.user);
   }
 
 }
