@@ -1,4 +1,5 @@
 export class User {
+
     id: number;
     playerUsername: string;
     playerPassword: string;
@@ -11,4 +12,5 @@ export class User {
         this.playerEmail = playerEmail;
         this.playerRole = playerRole;
     }
+
 }
