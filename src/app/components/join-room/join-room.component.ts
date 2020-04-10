@@ -14,7 +14,7 @@ export class JoinRoomComponent implements OnInit {
   user: User;
   user$: Observable<User>;
   room: Room;
-  id: number;
+  room$: Observable<Room>;
 
   constructor(
     private storage: StorageMap,
@@ -26,15 +26,41 @@ export class JoinRoomComponent implements OnInit {
     this.user$.subscribe(
       (result) => {
         this.user = result;
+        // @ts-ignore
+        this.room$ = this.storage.get<Room>('currentRoom');
+        this.room$.subscribe(
+          (result) => {
+            this.room = result;
+            this.roomService.getDiscordLink(this.user, this.room).subscribe(
+              (link) => {
+                console.log(link);
+                // window.open(link);
+              }
+            )
+          }
+        );
       }
     );
 
-    this.roomService.getRoomById(this.id).subscribe(
-      (result) => {
-        this.room = result;
-        console.log(this.room);
-      }
-    );
+    // @ts-ignore
+    // this.room$ = this.storage.get<Room>('currentRoom');
+    // this.room$.subscribe(
+    //   (result) => {
+    //     this.room = result;
+    //     this.roomService.getDiscordLink(this.user, this.room).subscribe(
+    //       (link) => {
+    //         console.log(link);
+    //       }
+    //     )
+    //   }
+    // );
+    
+    // this.roomService.getDiscordLink(this.user, this.room).subscribe(
+    //   (link) => {
+    //     console.log(link);
+    //   }
+    // )
+
   }
 
 }

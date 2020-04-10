@@ -1,5 +1,15 @@
-<div *ngIf="user; else login">
-    <p class="text-light">join-rooms works!</p>
+<div *ngIf="user; else login" class="container text-center text-light">
+  <div class="row justify-content-center mt-3">
+    <div class="col">
+      <h1>Joining Room...</h1>
+      <hr>
+    </div>
+  </div>
+
+  <div class="jumbotron bg-dark" *ngIf="room">
+    <p>{{ room.name }}</p>
+  </div>
+
 </div>
 
 <ng-template #login>
