@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'create-room', component: CreateRoomComponent },
   { path: 'surveys', component: SurveysComponent },
   { path: 'supported-games', component: SupportedGamesComponent },
-  { path: 'room', component: JoinRoomComponent },
+  { path: 'room/id', component: JoinRoomComponent },
 ]
 
 @NgModule({
