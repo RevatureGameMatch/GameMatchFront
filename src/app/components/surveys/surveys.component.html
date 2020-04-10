@@ -1,1 +1,9 @@
-<p class="text-light">surveys works!</p>
+<div *ngIf="user; else login">
+    <p class="text-light">surveys works!</p>
+</div>
+
+<ng-template #login>
+    <div class="container text-center text-light">
+      <h2>You are not logged in.</h2>
+    </div>
+</ng-template>
