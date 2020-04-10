@@ -10,6 +10,7 @@ import { ViewRoomsComponent } from './components/view-rooms/view-rooms.component
 import { CreateRoomComponent } from './components/create-room/create-room.component';
 import { SurveysComponent } from './components/surveys/surveys.component';
 import { SupportedGamesComponent } from './components/supported-games/supported-games.component';
+import { JoinRoomComponent } from './components/join-room/join-room.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'create-room', component: CreateRoomComponent },
   { path: 'surveys', component: SurveysComponent },
   { path: 'supported-games', component: SupportedGamesComponent },
+  { path: 'room', component: JoinRoomComponent },
 ]
 
 @NgModule({

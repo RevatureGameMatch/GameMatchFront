@@ -15,6 +15,7 @@ import { CreateRoomComponent } from './components/create-room/create-room.compon
 import { ViewRoomsComponent } from './components/view-rooms/view-rooms.component';
 import { SurveysComponent } from './components/surveys/surveys.component';
 import { SupportedGamesComponent } from './components/supported-games/supported-games.component';
+import { JoinRoomComponent } from './components/join-room/join-room.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { SupportedGamesComponent } from './components/supported-games/supported-
     ViewRoomsComponent,
     SurveysComponent,
     SupportedGamesComponent,
+    JoinRoomComponent,
   ],
   imports: [
     BrowserModule,
