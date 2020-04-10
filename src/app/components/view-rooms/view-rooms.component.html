@@ -58,18 +58,20 @@
           <th scope="col"># of Players</th>
           <th scope="col">Max Players</th>
           <th scope="col">Game</th>
-          <th scope="col">Room Description</th>
+          <th scope="col">Room Name</th>
           <th scope="col">Playstyle</th>
+          <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let room of rooms$ | async">
-          <td>{{ room.currentPlayers }}</td>
-          <td>{{ room.maxPlayers }}</td>
-          <td>{{ room.game.name }}</td>
-          <td>{{ room.description }}</td>
-          <td>{{ room.style }}</td>
-        </tr>
+          <tr *ngFor="let room of rooms$ | async">
+            <td>{{ room.currentPlayers }}</td>
+            <td>{{ room.maxPlayers }}</td>
+            <td>{{ room.game.name }}</td>
+            <td>{{ room.name }}</td>
+            <td>{{ room.style }}</td>
+            <td><div routerLink="/dashboard" class="btn btn-block btn-primary">Join</div></td>
+          </tr>
       </tbody>
     </table>
   </div>
