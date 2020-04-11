@@ -7,13 +7,16 @@ import { Game } from '../models/game';
 })
 export class GetGamesService {
 
+  url = "http://www.revatureprojects.com:8085/g2g/Game";
+
   constructor(private http: HttpClient) { }
 
   getGames() {
-    return this.http.get<Game[]>("http://www.revatureprojects.com:8085/g2g/Game");
+    return this.http.get<Game[]>(this.url);
   }
 
   getGameFromAPI(id: number) {
     return this.http.get("https://api.rawg.io/api/games/" + id);
   }
+
 }
