@@ -14,6 +14,7 @@ export class SupportedGamesComponent implements OnInit {
   user$: Observable<User>;
   user: User;
   games: Game[];
+  isModerator: boolean;
   image;
   images;
 
@@ -28,7 +29,10 @@ export class SupportedGamesComponent implements OnInit {
     this.user$.subscribe(
       (result) => {
         this.user = result
-        console.log(this.user);
+        if (this.user != null && (this.user.playerRole == "MODERATOR" || this.user.playerRole == "ADMIN")) {
+          this.isModerator = true;
+          console.log(this.user, "; isModerator: " + this.isModerator);
+        }
       }
     );
 
@@ -37,6 +41,7 @@ export class SupportedGamesComponent implements OnInit {
         this.games = result;
         console.log(this.games);
 
+        // TODO: Finish logic to pull images from API
         // this.games.forEach(game => {
         //   this.gameService.getGameFromAPI(game.gameId).subscribe(
         //     (result) => {

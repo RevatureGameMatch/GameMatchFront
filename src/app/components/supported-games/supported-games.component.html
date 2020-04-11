@@ -1,14 +1,20 @@
 <div class="container justify-content-center">
     <div class="row justify-content-center mt-3">
-        <div class="col text-center text-light">
+        <div class="col-4"></div>
+        <div class="col-4 text-center text-light">
           <h1>Join Room</h1>
           <hr>
+        </div>
+        <div class="col-4 text-right">
+          <!-- TODO: Implement add game functionality -->
+          <!-- <div *ngIf="isModerator" class="btn btn-primary">Add Game</div> -->
         </div>
     </div>
 
     <div class="row justify-content-center">
       <div *ngFor="let game of games" class="card col-3 m-4" style="width: 18rem;">
-        <img src="{{ image }}" class="card-img-top" alt="...">
+        <!-- TODO: Pull images from API -->
+        <!-- <img src="{{ image }}" class="card-img-top" alt="..."> -->
         <div class="card-body">
           <h5 class="card-title">{{ game.name }}</h5>
           <p class="card-text">{{ game.description }}</p>
