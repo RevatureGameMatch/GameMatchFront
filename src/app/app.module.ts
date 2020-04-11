@@ -14,6 +14,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CreateRoomComponent } from './components/create-room/create-room.component';
 import { ViewRoomsComponent } from './components/view-rooms/view-rooms.component';
 import { SurveysComponent } from './components/surveys/surveys.component';
+import { SupportedGamesComponent } from './components/supported-games/supported-games.component';
+import { JoinRoomComponent } from './components/join-room/join-room.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,9 @@ import { SurveysComponent } from './components/surveys/surveys.component';
     ViewRoomsComponent,
     SurveysComponent,
     FilterPipe,
+    SupportedGamesComponent,
+    JoinRoomComponent,
+
   ],
   imports: [
     BrowserModule,

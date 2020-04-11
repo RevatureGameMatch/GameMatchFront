@@ -9,19 +9,19 @@ import { Observable } from 'rxjs';
 })
 export class ViewRoomsService {
 
-  url = "http://www.revatureprojects.com:8085/g2g/Rooms";
+  url = "http://www.revatureprojects.com:8085/g2g/Room";
 
   constructor(private http: HttpClient) { }
 
   getCasualRooms(user: User) {
-    return this.http.post<Room[]>(this.url + "/Casual", user);
+    return this.http.post<Room[]>(this.url + "/Style/Casual", user);
   }
 
   getSeriousRooms(user: User) {
-    return this.http.post<Room[]>(this.url + "/Serious", user);
+    return this.http.post<Room[]>(this.url + "/Style/Serious", user);
   }
 
   getHybridRooms(user: User) {
-    return this.http.post<Room[]>(this.url + "/Hybrid", user);
+    return this.http.post<Room[]>(this.url + "/Style/Hybrid", user);
   }
 }

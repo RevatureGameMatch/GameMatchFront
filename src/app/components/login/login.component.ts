@@ -22,8 +22,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private storage: StorageMap,
     private loginService: LoginService,
-    private formBuilder: FormBuilder,
-    private router: Router) {
+    private formBuilder: FormBuilder,) {
       this.loginForm = this.formBuilder.group({
         username: this.username,
         password: this.password,
@@ -35,15 +34,18 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(loginTemplate): void {
-    let input = this.loginService.login(loginTemplate.username, loginTemplate.password)
-      .subscribe(input => {
-        this.storage.set('currentUser', input).subscribe(() => {
-          location.assign('/dashboard');
-        });
-         
-      });
-    this.loginForm.reset();
-    this.expanded = true;
-  }
+    this.loginService.login(loginTemplate.username, loginTemplate.password)
+      .subscribe(
+        (user) => {
+          this.storage.set('currentUser', user).subscribe(() => {
+            location.assign('/dashboard'); 
+          });
+        },
+        (error) => {
+          this.expanded = true;
+        }
+      );
 
+    this.loginForm.reset(); 
+  }
 }

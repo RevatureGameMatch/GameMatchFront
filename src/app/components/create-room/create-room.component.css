@@ -9,4 +9,9 @@
     border: 20px solid transparent;
 
   }
+
+  .col-centered{
+    float: none;
+    margin: 0 auto;
+}
   

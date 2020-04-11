@@ -3,6 +3,13 @@
     <div class="container">
       <a id="title" routerLink="/home" class="navbar-brand text-light">{{titleAbbreviated}}</a>
 
+      <ul class="nav nav-tabs mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/supported-games">Games</a>
+        </li>
+      </ul>
+      
+
       <div *ngIf="user | async as jsonUser; else login">
         <span class="m-2">
           <a routerLink="/dashboard">Dashboard</a>

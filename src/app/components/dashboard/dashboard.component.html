@@ -1,7 +1,7 @@
-<div class="container text-center text-light">
+<div *ngIf="user$ | async; else login" class="container text-center text-light">
     <div class="row justify-content-center mt-3">
       <div class="col">
-        <h1>Welcome, {{ (user | async)?.playerUsername }}</h1>
+        <h1>Welcome, {{ (user$ | async)?.playerUsername }}</h1>
         <hr>
       </div>
     </div>
@@ -25,3 +25,9 @@
       </div>
     </div>
 </div>
+
+<ng-template #login>
+  <div class="container text-center text-light">
+    <h2>You are not logged in.</h2>
+  </div>
+</ng-template>

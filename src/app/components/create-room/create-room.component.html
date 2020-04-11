@@ -1,5 +1,19 @@
-<br/>
-<div class="container text-center text-light">
+<div *ngIf="expanded == true" class="container justify-content-center text-light">
+  <div class="col-md-4 col-centered">
+    <div class="row">
+      <h2 class="text-light" style="text-align:center">You have sucessfully created a new room!</h2>
+    </div>
+
+    <a routerLink="/room/{{createdRoom}}">
+      <div class="row justify-content-center p-4">
+        <button class="btn btn-primary btn-block" size="45">Join Room</button>
+      </div>
+    </a>  
+  </div>
+</div>
+
+
+<div *ngIf="expanded == false" class="container text-center text-light">
     <div class="row justify-content-center m-3">
 <div class="col-lg-6">
   <div class="text-left">
@@ -29,10 +43,6 @@
       </table>
       </div>
     </div>
-
-
-
-
   <!--Original Form-->
   <div class="col-lg-6">
   <div class="row justify-content-center m-3"> 
@@ -97,3 +107,5 @@
 
 </div>
 </div>
+
+

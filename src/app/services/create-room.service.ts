@@ -18,8 +18,6 @@ export class CreateRoomService {
       sender: sender,
       room: r,
     }
-    console.log(t);
-    console.log(JSON.stringify(t));
     return this.http.post<{Object}>('http://www.revatureprojects.com:8085/g2g/Room', t);
   }
 

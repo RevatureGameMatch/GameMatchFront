@@ -35,7 +35,9 @@ export class CreateRoomComponent implements OnInit {
 
   Style: String[] = ['Casual', 'Hybrid', 'Serious'];
 
-  sender: object;
+  expanded: boolean;
+
+  createdRoom: number;
 
   constructor(private crs: CreateRoomService, private formBuilder: FormBuilder, private storage: StorageMap) {
     this.roomForm = this.formBuilder.group({
@@ -51,6 +53,7 @@ export class CreateRoomComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.expanded = false;
     // @ts-ignore
     this.user$ = this.storage.get<User>('currentUser');
     this.user$.subscribe(
@@ -76,13 +79,17 @@ export class CreateRoomComponent implements OnInit {
     )
     let u = this.user;
   
-    console.log(r);
-    console.log(this.sender);
     this.crs.createRoom(u,r).subscribe(
-      ()=>{}
+      (value)=>{
+        this.createdRoom = Object.values(value)[0];
+        this.expanded = true;
+        console.log(this.createdRoom);
+      },
+      (error)=>{
+        alert("Unable to create room.");
+      }
     );
     this.roomForm.reset();
-    alert("Successfully created room!");
   }
 
   changeGame(g) {

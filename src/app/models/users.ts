@@ -1,12 +1,12 @@
 export class User {
 
-    id: number;
+    playerId: number;
     playerUsername: string;
-    playerPassword: string;
     playerEmail: string;
+    playerPassword: string;
     playerRole: string;
 
-    constructor(playerUsername: string, playerPassword: string, playerEmail: string, playerRole){
+    constructor(playerUsername: string, playerEmail: string, playerPassword: string, playerRole: string){
         this.playerUsername = playerUsername;
         this.playerPassword = playerPassword;
         this.playerEmail = playerEmail;
