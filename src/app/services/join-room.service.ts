@@ -14,13 +14,13 @@ export class JoinRoomService {
   constructor(private http: HttpClient) { }
 
 
-  getDiscordLink(sender: User, room: Room) : Observable<string> {
+  getDiscordLink(sender: User, room: Room) : Observable<Object> {
     let playerRoomTemplate = {
       sender: sender,
       room: room,
     }
     console.log(playerRoomTemplate);
     console.log(JSON.stringify(playerRoomTemplate));
-    return this.http.post<string>(this.url, playerRoomTemplate);
+    return this.http.post<Object>(this.url, playerRoomTemplate);
   }
 }

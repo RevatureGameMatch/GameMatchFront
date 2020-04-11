@@ -7,7 +7,12 @@
   </div>
 
   <div class="jumbotron bg-dark" *ngIf="room">
-    <p>{{ room.name }}</p>
+    <h3>You are being redirected to Discord.</h3>
+    <br/>
+    <h4>Game: {{ room.game.name }}</h4>
+    <h4>Room: {{ room.name }}</h4>
+    <br/>
+    <a href="{{ link }}" class="btn btn-primary mt-2 mb-5">Join Discord Room</a>
   </div>
 
 </div>
