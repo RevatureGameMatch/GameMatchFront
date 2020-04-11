@@ -14,6 +14,8 @@ export class SupportedGamesComponent implements OnInit {
   user$: Observable<User>;
   user: User;
   games: Game[];
+  image;
+  images;
 
   constructor(
     private storage: StorageMap,
@@ -34,8 +36,18 @@ export class SupportedGamesComponent implements OnInit {
       (result) => {
         this.games = result;
         console.log(this.games);
+
+        // this.games.forEach(game => {
+        //   this.gameService.getGameFromAPI(game.gameId).subscribe(
+        //     (result) => {
+        //       // @ts-ignore
+        //       this.image = result.background_image;
+        //     }
+        //   )
+        // });
       }
     )
+    
   }
 
 
