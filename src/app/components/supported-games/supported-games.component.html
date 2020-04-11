@@ -7,7 +7,7 @@
     </div>
 
     <div class="row justify-content-center">
-      <div *ngFor="let game of games" class="card col-3 m-4" style="width: 18rem; height: 14rem;">
+      <div *ngFor="let game of games" class="card col-3 m-4" style="width: 18rem;">
         <div class="card-body">
           <h5 class="card-title">{{ game.name }}</h5>
           <p class="card-text">{{ game.description }}</p>
@@ -17,36 +17,5 @@
       </div>
     </div>
     <br/>
-
-    <!-- <div *ngFor="let game of games" class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title">{{ game.name }}</h5>
-          <p class="card-text">{{ game.description }}</p>
-          <a href="{{ game.link }}" class="card-link">Website Link</a>
-          <a routerLink="/dashboard" class="card-link">Join Rooms</a>
-        </div>
-    </div> -->
-
-    <!-- <div class="card" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="card-link">Card link</a>
-        <a href="#" class="card-link">Another link</a>
-      </div>
-    </div>
-
-    <br/>
-
-    <div class="card" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="card-link">Card link</a>
-        <a href="#" class="card-link">Another link</a>
-      </div>
-    </div> -->
 
 </div>
