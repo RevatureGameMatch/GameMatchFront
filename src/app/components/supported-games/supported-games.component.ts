@@ -41,6 +41,7 @@ export class SupportedGamesComponent implements OnInit {
         this.games = result;
         console.log(this.games);
 
+        // TODO: Finish logic to pull images from API
         // this.games.forEach(game => {
         //   this.gameService.getGameFromAPI(game.gameId).subscribe(
         //     (result) => {
