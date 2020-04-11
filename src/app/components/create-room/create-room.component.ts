@@ -81,6 +81,9 @@ export class CreateRoomComponent implements OnInit {
   
     this.crs.createRoom(u,r).subscribe(
       (value)=>{
+        this.storage.set('currentRoom', value).subscribe(() => {
+          
+        })
         this.createdRoom = Object.values(value)[0];
         this.expanded = true;
         console.log(this.createdRoom);
