@@ -1,35 +1,78 @@
 <br/>
 <div class="container text-center text-light">
+    <div class="row justify-content-center m-3">
+<div class="col-lg-6">
+  <div class="text-left">
+    <div class="row">
+      <div class="col-md-6">
+  <h3 class="text-light">Search all games:</h3>
+  </div>
+
+  <div class="col-md-6">
+  <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="search text goes here">
+</div>    
+</div>
+</div>
+<br>
+  <div class="table-wrap">
+    <table class="table table-hover" id="gameTable">
+      <thead class="thead-light">
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+      </thead>
+      <tbody>
+      <tr *ngFor="let game of Games | filter: searchText" >
+        <td class="col-auto">{{game.name}}</td>
+        <td class="col-auto">{{game.description}}</td>
+     </tr>
+      </tbody>
+      </table>
+      </div>
+    </div>
+
+
+
+
+  <!--Original Form-->
+  <div class="col-lg-6">
   <div class="row justify-content-center m-3"> 
     <div class="col"><h1 class="text-light">Create a New Room:</h1></div>
   </div>
-    <div class="row justify-content-center">
+    
     <form (ngSubmit)="onSubmit()" [formGroup]="roomForm" class="text-left">
 
       <div class="form-group">
+        <label class="text-light" for="name">Room Name:</label>
+        <input type="text" class="form-control" formControlName="name" placeholder="Room Name" name="name" id="name" size="45">
+
+      </div>
+
+      <div class="form-group">
         <label class="text-light" for="desc">Room Description:</label>
-        <textarea rows="5" wrap="soft" cols="45" class="form-control" formControlName="desc" placeholder="250 characters max" name="desc" id="desc" maxLength="250" required></textarea>
-        <span class="text-danger" *ngIf="(desc.dirty || desc.touched) && desc.invalid && desc.errors.required">
-          Room Description is required.
-      </span>
+        <textarea rows="5" wrap="soft" cols="45" class="form-control" formControlName="desc" placeholder="250 characters max" name="desc" id="desc" maxLength="250"></textarea>
+        
       </div>
 
       <div class="form-group" size="45">
         <label class="text-light" for="game">Game:</label>
         <select class="custom-select" (change)="changeGame($event)" formControlName="game">
             <option value="" selected disabled hidden>Choose your game</option>
-            <option *ngFor="let game of Game" [ngValue]="game">{{game}}</option>
+            <option *ngFor="let game of Games; let i = index" value="{{i}}">{{game.name}}</option>
          </select>
+         
          <span class="text-danger" *ngIf="(game.dirty || game.touched) && game.invalid && game.errors.required">
             Game is required.
         </span>
+        <span *ngIf = "game.valid">
+        <div></div>
+      </span>
       </div>
 
       <div class="form-group" size="45">
         <label class="text-light" for="style">Play Style:</label>
         <select class="custom-select" (change)="changeStyle($event)" formControlName="style">
             <option value="" selected disabled hidden>Choose your play style</option>
-            <option *ngFor="let style of Style" [ngValue]="style">{{style}}</option>
+            <option *ngFor="let style of Style" value="{{style}}">{{style}}</option>
          </select>
          <span class="text-danger" *ngIf="(style.dirty || style.touched) && style.invalid && style.errors.required">
             Play style is required.
@@ -49,5 +92,8 @@
       </div>
 
     </form>
-    </div>
+    
+  </div>
+
+</div>
 </div>

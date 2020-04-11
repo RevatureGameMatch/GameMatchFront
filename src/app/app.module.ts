@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import {FilterPipe} from './components/create-room/filter.pipe'
 
 import { AppComponent } from './app.component';
 import { AboutG2GComponent } from './components/about-g2-g/about-g2-g.component';
@@ -14,7 +14,6 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CreateRoomComponent } from './components/create-room/create-room.component';
 import { ViewRoomsComponent } from './components/view-rooms/view-rooms.component';
 import { SurveysComponent } from './components/surveys/surveys.component';
-
 
 @NgModule({
   declarations: [
@@ -27,6 +26,7 @@ import { SurveysComponent } from './components/surveys/surveys.component';
     CreateRoomComponent,
     ViewRoomsComponent,
     SurveysComponent,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,
