@@ -1,5 +1,28 @@
+
+
 <div *ngIf="user; else login">
-    <p class="text-light">surveys works!</p>
+    <div class="container justify-content-center">
+      <div class="row justify-content-center mt-3">
+        <div class="col text-center text-light">
+          <h1>Surveys</h1>
+          <hr>
+        </div>
+      </div>
+
+      <!-- <div class="row justify-content-center">
+        <div *ngFor="let survey of surveys" class="card col-3 m-4" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Game:  | Player: </h5>
+            <h6 class="card-subtitle mb-2 text-muted">Game Created: </h6>
+            <div *ngFor="let skill of skills" class="card-text">
+              <span>{{ skill.name }}</span>
+              <span></span>
+            </div>
+          </div>
+        </div>
+      </div> -->
+      <br/>
+    </div>
 </div>
 
 <ng-template #login>
