@@ -15,7 +15,8 @@ export class JoinRoomComponent implements OnInit {
   user$: Observable<User>;
   room: Room;
   room$: Observable<Room>;
-  link;
+  appLink;
+  webLink;
 
   constructor(
     private storage: StorageMap,
@@ -27,17 +28,22 @@ export class JoinRoomComponent implements OnInit {
     this.user$.subscribe(
       (result) => {
         this.user = result;
+
         // @ts-ignore
         this.room$ = this.storage.get<Room>('currentRoom');
         this.room$.subscribe(
           (result) => {
             this.room = result;
+
             this.roomService.getDiscordLink(this.user, this.room).subscribe(
               (result) => {
                 console.log(result);
                 // @ts-ignore
-                this.link = result.message;
-                window.open(this.link.message);
+                this.appLink = result.urlApp;
+                // @ts-ignore
+                this.webLink = result.urlWeb;
+                // @ts-ignore
+                window.open(this.appLink);
               }
             )
           }
