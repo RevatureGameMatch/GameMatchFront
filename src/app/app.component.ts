@@ -24,7 +24,7 @@ export class AppComponent {
   }
 
   logout(): void{
-    this.storage.delete('currentUser').subscribe(() => {
+    this.storage.clear().subscribe(() => {
       location.assign('/home');
     });
 
