@@ -16,6 +16,7 @@ import { ViewRoomsComponent } from './components/view-rooms/view-rooms.component
 import { SurveysComponent } from './components/surveys/surveys.component';
 import { SupportedGamesComponent } from './components/supported-games/supported-games.component';
 import { JoinRoomComponent } from './components/join-room/join-room.component';
+import { ImagePipe } from './components/supported-games/image.pipe';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { JoinRoomComponent } from './components/join-room/join-room.component';
     FilterPipe,
     SupportedGamesComponent,
     JoinRoomComponent,
+    ImagePipe,
 
   ],
   imports: [

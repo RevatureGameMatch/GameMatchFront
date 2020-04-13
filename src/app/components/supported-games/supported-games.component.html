@@ -13,8 +13,9 @@
 
     <div class="row justify-content-center">
       <div *ngFor="let game of games" class="card col-3 m-4" style="width: 18rem;">
-        <!-- TODO: Pull images from API -->
-        <!-- <img src="{{ image }}" class="card-img-top" alt="..."> -->
+
+        <!-- Retrieves a picture from Rawg API and inserts it into a card -->
+        <img src="{{ ((game.rawgId | image) | async)?.background_image }}" class="card-img-top pt-2" alt="">
         <div class="card-body">
           <h5 class="card-title">{{ game.name }}</h5>
           <p class="card-text">{{ game.description }}</p>
