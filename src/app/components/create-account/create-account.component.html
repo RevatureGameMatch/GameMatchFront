@@ -7,9 +7,9 @@
     </div>
   </div>
 
-  <div *ngIf="usernameExists == true">
+  <div *ngIf="errorExists == true">
     <div class="row justify-content-center">
-        <div class="alert alert-danger col-5">Username already exists.</div>
+        <div class="alert alert-danger col-5">{{ errorMessage }}</div>
     </div>
   </div>
 
