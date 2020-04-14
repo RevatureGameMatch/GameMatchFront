@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'playstyle', component: PlaystyleComponent },
-  { path: 'view-rooms/:style', component: ViewRoomsComponent },
+  { path: 'rooms/:style', component: ViewRoomsComponent },
   { path: 'create-room', component: CreateRoomComponent },
   { path: 'surveys', component: SurveysComponent },
   { path: 'supported-games', component: SupportedGamesComponent },
