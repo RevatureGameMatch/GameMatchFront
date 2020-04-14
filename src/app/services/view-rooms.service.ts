@@ -25,19 +25,19 @@ export class ViewRoomsService {
     return this.http.post<Room[]>(this.url + "/Style/Hybrid", user);
   }
 
-  getRoomsByGame(user: User, gameId: number) {
+  getRoomsByGame(user: User, gameId) {
     return this.http.post<Room[]>(this.url + "/Game/Id/" + gameId, user);
   }
 
-  getCasualRoomsByGame(user: User, gameId: number) {
+  getCasualRoomsByGame(user: User, gameId) {
     return this.http.post<Room[]>(this.url + "/Game/Casual/" + gameId, user);
   }
 
-  getSeriousRoomsByGame(user: User, gameId: number) {
+  getSeriousRoomsByGame(user: User, gameId) {
     return this.http.post<Room[]>(this.url + "/Game/Serious/" + gameId, user);
   }
 
-  getHybridRoomsByGame(user: User, gameId: number) {
+  getHybridRoomsByGame(user: User, gameId) {
     return this.http.post<Room[]>(this.url + "/Game/Hybrid/" + gameId, user);
   }
 }
