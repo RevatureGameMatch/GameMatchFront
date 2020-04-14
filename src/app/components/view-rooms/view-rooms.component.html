@@ -23,17 +23,18 @@
   <div class="container text-light" *ngIf="style">
     <div class="row justify-content-center mt-3">
 
-      <div class="col-4">
-        <a class="btn dropdown-item">Filter By Game</a>
-      </div>
+      <div class="col-4"></div>
 
-      <div class="col-4 text-center">
+      <div class="col-4 text-center mb-3">
         <h2>Available Rooms</h2>
       </div>
 
-      <!-- TODO: Implement pagination -->
-      <!-- <div class="col-4">
-        <nav aria-label="...">
+      <div class="col-4">
+        <div routerLink="/create-room" class="btn btn-secondary ml-5 float-right">Create A Room</div>
+      </div>
+
+    <!-- TODO: Implement pagination -->
+    <!-- <nav aria-label="...">
           <ul class="pagination justify-content-end">
             <li class="page-item">
               <a class="page-link bg-dark" href="#" tabindex="-1" aria-disabled="true">
@@ -49,9 +50,8 @@
               </a>
             </li>
           </ul>
-        </nav>
-      </div> -->
-    
+        </nav> -->
+
     </div>
 
     <div class="row justify-content-center">
