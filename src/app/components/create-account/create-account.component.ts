@@ -45,9 +45,10 @@ export class CreateAccountComponent implements OnInit {
         this.expanded = true; 
       },
       (error) => {
+        console.log(error);
         this.usernameExists = true;
       }
     );
-    this.accForm.reset();  
+    // this.accForm.reset();  
   }
 }
