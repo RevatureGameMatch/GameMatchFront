@@ -94,7 +94,7 @@
           <label class="text-light" for="maxP">Max Number of Players:</label>
           <input type="number" min="1" step="1" max="10" oninput="validity.valid||(value='');" class="form-control" formControlName="maxP"  name="maxP" id="maxP" size="45" required>
           <span class="text-danger" *ngIf="(maxP.dirty || maxP.touched) && maxP.invalid && maxP.errors.required">
-            Min number of players must be 1.
+            Min number of players must be 2.
           </span>
         </div>
 
