@@ -48,10 +48,8 @@ export class CreateAccountComponent implements OnInit {
       },
 
       (errorObj) => {
-        console.log(errorObj);
         this.errorExists = true;
         if (errorObj.error.message == "Email Taken") {
-          console.log(errorObj.error.message);
           this.errorMessage = "The email " + errorObj.error.playerEmail + " already exists.";
         }
         if (errorObj.error.message == "Username Taken") {
