@@ -2,7 +2,7 @@
     <div class="row justify-content-center mt-3">
         <div class="col-4"></div>
         <div class="col-4 text-center text-light">
-          <h1>Join Room</h1>
+          <h1>Supported Games</h1>
           <hr>
         </div>
         <div class="col-4 text-right">
@@ -13,13 +13,14 @@
 
     <div class="row justify-content-center">
       <div *ngFor="let game of games" class="card col-3 m-4" style="width: 18rem;">
-        <!-- TODO: Pull images from API -->
-        <!-- <img src="{{ image }}" class="card-img-top" alt="..."> -->
+
+        <!-- Retrieves a picture from Rawg API and inserts it into a card -->
+        <img src="{{ ((game.rawgId | image) | async)?.background_image }}" class="card-img-top pt-2" alt="">
         <div class="card-body">
           <h5 class="card-title">{{ game.name }}</h5>
           <p class="card-text">{{ game.description }}</p>
           <a href="{{ game.link }}" class="card-link">Website Link</a>
-          <a routerLink="/dashboard" class="card-link">Join Rooms</a>
+          <a routerLink="/rooms/game/{{ game.gameId }}" class="card-link">Join Rooms</a>
         </div>
       </div>
     </div>

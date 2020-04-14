@@ -1,0 +1,17 @@
+.table-wrap {
+    height: 625px;
+    overflow-y: auto;
+  }
+
+  .col-lg-6{
+    
+    background-clip: padding-box;
+    border: 20px solid transparent;
+
+  }
+
+  .col-centered{
+    float: none;
+    margin: 0 auto;
+}
+  

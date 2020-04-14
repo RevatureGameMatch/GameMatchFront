@@ -14,6 +14,5 @@ export class CreateAccountService {
     console.log(f);
     return this.http.post<AccountForm>('http://www.revatureprojects.com:8085/g2g/Player', f);
   }
-  
 
 }

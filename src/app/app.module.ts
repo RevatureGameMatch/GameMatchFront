@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import {FilterPipe} from './components/create-room/filter.pipe'
 
 import { AppComponent } from './app.component';
 import { AboutG2GComponent } from './components/about-g2-g/about-g2-g.component';
@@ -16,7 +16,8 @@ import { ViewRoomsComponent } from './components/view-rooms/view-rooms.component
 import { SurveysComponent } from './components/surveys/surveys.component';
 import { SupportedGamesComponent } from './components/supported-games/supported-games.component';
 import { JoinRoomComponent } from './components/join-room/join-room.component';
-
+import { ImagePipe } from './components/supported-games/image.pipe';
+import { PlaystyleComponent } from './components/playstyle/playstyle.component';
 
 @NgModule({
   declarations: [
@@ -29,8 +30,12 @@ import { JoinRoomComponent } from './components/join-room/join-room.component';
     CreateRoomComponent,
     ViewRoomsComponent,
     SurveysComponent,
+    FilterPipe,
     SupportedGamesComponent,
     JoinRoomComponent,
+    ImagePipe,
+    PlaystyleComponent,
+
   ],
   imports: [
     BrowserModule,

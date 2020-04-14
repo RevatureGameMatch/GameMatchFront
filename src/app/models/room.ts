@@ -16,12 +16,15 @@ export class Room {
     game: Game;
 
 
-    constructor(description: string, status: string, style: string, maxPlayers: number) {
+    constructor(name: string, description: string, status: string, style: string, maxPlayers: number, game: Game) {
             this.created =  new Date(Date.now());
-            this.description = description;
+            this.name = name;    
             this.currentPlayers = 0;
             this.maxPlayers = maxPlayers;
+            this.description = description;
             this.status = status;
             this.style = style;
+            this.game = game;
+        
     }
 }

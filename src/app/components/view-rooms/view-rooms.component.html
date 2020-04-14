@@ -1,38 +1,28 @@
 <div *ngIf="user; else login">
-  <div class="container text-center text-light" *ngIf="!style">
-    <div class="row justify-content-center mt-3">
-      <div class="col">
-        <h1>Join Room</h1>
-        <hr>
-      </div>
-    </div>
 
-    <div class="row mt-5">
-      <div class="col-12 text-center mt-5">
-        <h2 class="mb-5">What kind of player are you?</h2>
-        <a class="btn-lg btn-secondary text-light m-5"
-            (click)="viewCasualRooms()">Casual</a>
-        <a class="btn-lg btn-primary text-light m-5"
-            (click)="viewSeriousRooms()">Serious</a>
-        <a class="btn-lg btn-success text-light m-5"
-            (click)="viewHybridRooms()">Hybrid</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="container text-light" *ngIf="style">
+  <div class="container text-light">
     <div class="row justify-content-center mt-3">
 
       <div class="col-4">
-        <a class="btn dropdown-item">Filter By Game</a>
+        <div class="btn-group" role="group" aria-label="Button group for playstyle">
+          <button type="button" class="btn btn-outline-secondary" (click)="filterCasual()">Casual</button>
+          <button type="button" class="btn btn-outline-secondary" (click)="filterSerious()">Serious</button>
+          <button type="button" class="btn btn-outline-secondary" (click)="filterHybrid()">Hybrid</button>
+          <button *ngIf="gameId" type="button" class="btn btn-outline-secondary" (click)="filterAll()">All</button>
+        </div>
       </div>
 
       <div class="col-4 text-center">
         <h2>Available Rooms</h2>
+        <hr>
       </div>
 
       <div class="col-4">
-        <nav aria-label="...">
+        <div routerLink="/create-room" class="btn btn-secondary ml-5 float-right">Create A Room</div>
+      </div>
+
+    <!-- TODO: Implement pagination -->
+    <!-- <nav aria-label="...">
           <ul class="pagination justify-content-end">
             <li class="page-item">
               <a class="page-link bg-dark" href="#" tabindex="-1" aria-disabled="true">
@@ -48,34 +38,41 @@
               </a>
             </li>
           </ul>
-        </nav>
-      </div>
+        </nav> -->
+
     </div>
 
     <div class="row justify-content-center">
       <table class="table table-hover">
         <thead>
           <tr>
+            <th scope="col">Playstyle</th>
             <th scope="col"># of Players</th>
             <th scope="col">Max Players</th>
             <th scope="col">Game</th>
             <th scope="col">Room Name</th>
-            <th scope="col">Playstyle</th>
             <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
             <tr *ngFor="let room of rooms$ | async">
+              <td>{{ room.style }}</td>
               <td>{{ room.currentPlayers }}</td>
               <td>{{ room.maxPlayers }}</td>
               <td>{{ room.game.name }}</td>
               <td>{{ room.name }}</td>
-              <td>{{ room.style }}</td>
               <td><div routerLink="/room/id/{{room.id}}" class="btn btn-block btn-primary" (click)="joinRoom(room)">Join</div></td>
             </tr>
         </tbody>
       </table>
     </div>
+
+    <div *ngIf="noGames" class="row justify-content-center">
+      <div class="jumbotron text-center bg-dark text-light">
+        <h3>No open rooms available.</h3>
+      </div>
+    </div>
+
   </div>
 </div>
 

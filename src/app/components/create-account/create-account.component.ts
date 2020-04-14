@@ -39,6 +39,7 @@ export class CreateAccountComponent implements OnInit {
 
   onSubmit() {
     let a = new AccountForm(this.accForm.value.username, this.accForm.value.email, this.accForm.value.password, 'PLAYER')
+
      this.cas.createAccount(a).subscribe(
       (input) => { 
         this.expanded = true; 

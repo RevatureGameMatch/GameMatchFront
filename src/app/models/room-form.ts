@@ -1,9 +1,9 @@
-//import { parseLazyRoute } from '@angular/compiler/src/aot/lazy_routes';
+import { parseLazyRoute } from '@angular/compiler/src/aot/lazy_routes';
 
-export class AccountForm {
-    
-    public playerUsername: String;
+export class RoomForm {
+
     public playerEmail: String;
+    public playerUsername: String;
     public playerPassword: String;
     public playerRole: String;
 

@@ -15,6 +15,10 @@ export class GetGamesService {
     return this.http.get<Game[]>(this.url);
   }
 
+  getGameById(id) {
+    return this.http.get<Game>(this.url + "/id/" + id);
+  }
+
   getGameFromAPI(id: number) {
     return this.http.get("https://api.rawg.io/api/games/" + id);
   }
