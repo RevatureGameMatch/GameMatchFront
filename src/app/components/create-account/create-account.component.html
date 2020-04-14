@@ -7,9 +7,9 @@
     </div>
   </div>
 
-  <div *ngIf="usernameExists == true">
+  <div *ngIf="errorExists == true">
     <div class="row justify-content-center">
-        <div class="alert alert-danger col-5">Username already exists.</div>
+        <div class="alert alert-danger col-5">{{ errorMessage }}</div>
     </div>
   </div>
 
@@ -22,6 +22,9 @@
         <span class="text-danger" *ngIf="(email.dirty || email.touched) && email.invalid && email.errors.required">
           Email is required.
       </span>
+      <span class="text-danger" *ngIf="email.errors?.pattern">
+        Invalid email.
+    </span>
       </div>
 
       <div class="form-group">
@@ -52,7 +55,7 @@
 <div *ngIf="expanded == true" class="container justify-content-center text-light">
   <div class="col-md-4 col-centered">
     <div class="row">
-      <h2 class="text-light" style="text-align:center">You have sucessfully created an account!</h2>
+      <h2 class="text-light" style="text-align:center">You have successfully created an account!</h2>
     </div>
 
     <a routerLink="/login">

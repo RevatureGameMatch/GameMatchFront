@@ -12,100 +12,111 @@
   </div>
 </div>
 
-
-<div *ngIf="expanded == false" class="container text-center text-light">
+<div *ngIf="user$ | async; else login">
+  <div *ngIf="expanded == false" class="container text-center text-light">
     <div class="row justify-content-center m-3">
-<div class="col-lg-6">
-  <div class="text-left">
-    <div class="row">
-      <div class="col-md-6">
-  <h3 class="text-light">Search all games:</h3>
-  </div>
+      <div class="col-lg-6">
+        <div class="text-left">
+          <div class="row">
+            <div class="col-md-6">
+              <h3 class="text-light">Search all games:</h3>
+            </div>
 
-  <div class="col-md-6">
-  <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="search text goes here">
-</div>    
-</div>
-</div>
-<br>
-  <div class="table-wrap">
-    <table class="table table-hover" id="gameTable">
-      <thead class="thead-light">
-        <th scope="col">Name</th>
-        <th scope="col">Description</th>
-      </thead>
-      <tbody>
-      <tr *ngFor="let game of Games | filter: searchText" >
-        <td class="col-auto">{{game.name}}</td>
-        <td class="col-auto">{{game.description}}</td>
-     </tr>
-      </tbody>
-      </table>
+            <div class="col-md-6">
+              <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="search text goes here">
+            </div>    
+          </div>
+        </div>
+        <br>
+        <div class="table-wrap">
+          <table class="table table-hover" id="gameTable">
+            <thead class="thead-light">
+              <th scope="col">Name</th>
+              <th scope="col">Description</th>
+            </thead>
+            <tbody>
+              <tr *ngFor="let game of Games | filter: searchText" >
+                <td class="col-auto">{{game.name}}</td>
+                <td class="col-auto">{{game.description}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>
+
   <!--Original Form-->
-  <div class="col-lg-6">
-  <div class="row justify-content-center m-3"> 
-    <div class="col"><h1 class="text-light">Create a New Room:</h1></div>
-  </div>
+      <div class="col-lg-6">
+        <div class="row justify-content-center m-3"> 
+          <div class="col"><h1 class="text-light">Create a New Room:</h1></div>
+        </div>
     
-    <form (ngSubmit)="onSubmit()" [formGroup]="roomForm" class="text-left">
+      <form (ngSubmit)="onSubmit()" [formGroup]="roomForm" class="text-left">
 
-      <div class="form-group">
-        <label class="text-light" for="name">Room Name:</label>
-        <input type="text" class="form-control" formControlName="name" placeholder="Room Name" name="name" id="name" size="45">
+        <div class="form-group">
+          <label class="text-light" for="name">Room Name:</label>
+          <input type="text" class="form-control" formControlName="name" placeholder="Room Name" name="name" id="name" size="45">
 
-      </div>
+        </div>
 
-      <div class="form-group">
-        <label class="text-light" for="desc">Room Description:</label>
-        <textarea rows="5" wrap="soft" cols="45" class="form-control" formControlName="desc" placeholder="250 characters max" name="desc" id="desc" maxLength="250"></textarea>
+        <div class="form-group">
+          <label class="text-light" for="desc">Room Description:</label>
+          <textarea rows="5" wrap="soft" cols="45" class="form-control" formControlName="desc" placeholder="250 characters max" name="desc" id="desc" maxLength="250"></textarea>
         
-      </div>
+        </div>
 
-      <div class="form-group" size="45">
-        <label class="text-light" for="game">Game:</label>
-        <select class="custom-select" (change)="changeGame($event)" formControlName="game">
+        <div class="form-group" size="45">
+          <label class="text-light" for="game">Game:</label>
+          <select class="custom-select" (change)="changeGame($event)" formControlName="game">
             <option value="" selected disabled hidden>Choose your game</option>
             <option *ngFor="let game of Games; let i = index" value="{{i}}">{{game.name}}</option>
-         </select>
+          </select>
          
-         <span class="text-danger" *ngIf="(game.dirty || game.touched) && game.invalid && game.errors.required">
+          <span class="text-danger" *ngIf="(game.dirty || game.touched) && game.invalid && game.errors.required">
             Game is required.
-        </span>
-        <span *ngIf = "game.valid">
-        <div></div>
-      </span>
-      </div>
+          </span>
+          <span *ngIf = "game.valid">
+            <div></div>
+          </span>
+        </div>
 
-      <div class="form-group" size="45">
-        <label class="text-light" for="style">Play Style:</label>
-        <select class="custom-select" (change)="changeStyle($event)" formControlName="style">
+        <div class="form-group" size="45">
+          <label class="text-light" for="style">Play Style:</label>
+          <select class="custom-select" (change)="changeStyle($event)" formControlName="style">
             <option value="" selected disabled hidden>Choose your play style</option>
             <option *ngFor="let style of Style" value="{{style}}">{{style}}</option>
-         </select>
-         <span class="text-danger" *ngIf="(style.dirty || style.touched) && style.invalid && style.errors.required">
+          </select>
+          <span class="text-danger" *ngIf="(style.dirty || style.touched) && style.invalid && style.errors.required">
             Play style is required.
-        </span>
-      </div>
+          </span>
+        </div>
 
-      <div class="form-group" size="45">
-        <label class="text-light" for="maxP">Max Number of Players:</label>
-        <input type="number" min="1" step="1" max="10" class="form-control" formControlName="maxP"  name="maxP" id="maxP" size="45" required>
-        <span class="text-danger" *ngIf="(maxP.dirty || maxP.touched) && maxP.invalid && maxP.errors.required">
-            Min number of players must be 1.
-        </span>
+        <div class="form-group" size="45">
+          <label class="text-light" for="maxP">Max Number of Players:</label>
+          <input type="number" min="1" step="1" max="10" oninput="validity.valid||(value='');" class="form-control" formControlName="maxP"  name="maxP" id="maxP" size="45" required>
+          <span class="text-danger" *ngIf="(maxP.dirty || maxP.touched) && maxP.invalid && maxP.errors.required">
+            Min number of players must be 2.
+          </span>
+        </div>
+
+        <div class="row justify-content-center p-4">
+          <button type="submit" class="btn btn-primary btn-block" [disabled]="!roomForm.valid">Submit</button>
+        </div>
+
+      </form>
+      </div>
     </div>
-
-      <div class="row justify-content-center p-4">
-      <button type="submit" class="btn btn-primary btn-block" [disabled]="!roomForm.valid">Submit</button>
-      </div>
-
-    </form>
-    
   </div>
+</div>
 
-</div>
-</div>
+
+
+<ng-template #login>
+  <div class="container text-light text-center">
+    <div class="row justify-content-center">
+      <div class="alert alert-info mt-3 col-5">You are not logged in.</div>
+    </div>
+  </div>
+  <app-login></app-login>
+</ng-template>
 
 

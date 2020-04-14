@@ -26,7 +26,7 @@ export class ViewRoomsComponent implements OnInit {
     private viewService: ViewRoomsService,
     private storage: StorageMap,
     private route: ActivatedRoute,
-    private gameService: GetGamesService,) { }
+    private router: Router,) { }
 
   ngOnInit(): void {
     this.gameId = this.route.snapshot.paramMap.get('id');
@@ -92,6 +92,7 @@ export class ViewRoomsComponent implements OnInit {
     } else if (this.style != 'casual') {
       this.style = 'casual';
       this.rooms$ = this.viewService.getCasualRooms(this.user);
+      this.router.navigateByUrl('/rooms/casual');
     }
   }
 
@@ -102,6 +103,7 @@ export class ViewRoomsComponent implements OnInit {
     } else if (this.style != 'serious') {
       this.style = 'serious';
       this.rooms$ = this.viewService.getSeriousRooms(this.user);
+      this.router.navigateByUrl('/rooms/serious');
     }
   }
 
@@ -112,6 +114,7 @@ export class ViewRoomsComponent implements OnInit {
     } else if (this.style != 'hybrid') {
       this.style = 'hybrid';
       this.rooms$ = this.viewService.getHybridRooms(this.user);
+      this.router.navigateByUrl('/rooms/hybrid');
     }
   }
 
