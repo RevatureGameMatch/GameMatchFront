@@ -4,6 +4,8 @@ import { StorageMap } from '@ngx-pwa/local-storage';
 import { User } from 'src/app/models/users';
 import { Room } from 'src/app/models/room';
 import { Observable } from 'rxjs';
+import { ActivatedRoute, Router, ParamMap } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-join-room',
@@ -19,7 +21,9 @@ export class ViewRoomsComponent implements OnInit {
 
   constructor(
     private viewService: ViewRoomsService,
-    private storage: StorageMap,) { }
+    private storage: StorageMap,
+    private route: ActivatedRoute,
+    private router: Router,) { }
 
   ngOnInit(): void {
     // @ts-ignore
@@ -28,41 +32,20 @@ export class ViewRoomsComponent implements OnInit {
       (result) => {
         this.user = result
         console.log(this.user);
+
+        let style = this.route.snapshot.paramMap.get('style');
+        console.log(style);
+        if (style == 'casual') {
+          this.rooms$ = this.viewService.getCasualRooms(this.user);
+        }
+        if (style == 'serious') {
+          this.rooms$ = this.viewService.getSeriousRooms(this.user);
+        }
+        if (style == 'hybrid') {
+          this.rooms$ = this.viewService.getHybridRooms(this.user);
+        }
       }
     );
-  }
-  
-  viewCasualRooms() {
-    this.style = "casual";
-    this.viewService.getCasualRooms(this.user).subscribe(
-      (result) => {
-        console.log(result)
-        this.rooms = result;
-      }
-    )
-    this.rooms$ = this.viewService.getCasualRooms(this.user);
-  }
-
-  viewSeriousRooms() {
-    this.style = "serious";
-    this.viewService.getSeriousRooms(this.user).subscribe(
-      (result) => {
-        console.log(result);
-        this.rooms = result;
-      }
-    )
-    this.rooms$ = this.viewService.getSeriousRooms(this.user);
-  }
-
-  viewHybridRooms() {
-    this.style = "hybrid";
-    this.viewService.getHybridRooms(this.user).subscribe(
-      (result) => {
-        console.log(result);
-        this.rooms = result;
-      }
-    )
-    this.rooms$ = this.viewService.getHybridRooms(this.user);
   }
 
   joinRoom(room: Room) {
