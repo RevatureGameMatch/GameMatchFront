@@ -11,6 +11,7 @@ import { CreateRoomComponent } from './components/create-room/create-room.compon
 import { SurveysComponent } from './components/surveys/surveys.component';
 import { SupportedGamesComponent } from './components/supported-games/supported-games.component';
 import { JoinRoomComponent } from './components/join-room/join-room.component';
+import { PlaystyleComponent } from './components/playstyle/playstyle.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -19,7 +20,8 @@ const routes: Routes = [
   { path: 'signup', component: CreateAccountComponent },
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'view-rooms', component: ViewRoomsComponent },
+  { path: 'playstyle', component: PlaystyleComponent },
+  { path: 'view-rooms/:style', component: ViewRoomsComponent },
   { path: 'create-room', component: CreateRoomComponent },
   { path: 'surveys', component: SurveysComponent },
   { path: 'supported-games', component: SupportedGamesComponent },
