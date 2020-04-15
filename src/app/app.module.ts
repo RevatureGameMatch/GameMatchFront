@@ -18,6 +18,7 @@ import { SupportedGamesComponent } from './components/supported-games/supported-
 import { JoinRoomComponent } from './components/join-room/join-room.component';
 import { ImagePipe } from './components/supported-games/image.pipe';
 import { PlaystyleComponent } from './components/playstyle/playstyle.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { PlaystyleComponent } from './components/playstyle/playstyle.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    FontAwesomeModule,
 
   ],
   providers: [],
