@@ -9,20 +9,29 @@
         </div>
       </div>
 
-      <div class="row justify-content-center">
-        <div *ngFor="let room of rooms" class="card col-3 m-4" style="width: 18rem;">
-          <div class="card-body">
-            <h5 class="card-title">Game: {{ room.game.name }}</h5>
-            <h5 class="card-title">Player: </h5>
-            <h6 class="card-subtitle mb-2 text-muted">{{ room.created | date:'short' }}</h6>
-            <!-- <div *ngFor="let skill of skills" class="card-text">
-              <span>{{ skill.name }}</span>
-              <span></span>
-            </div> -->
+      <div *ngFor="let roomSurvey of roomSurveySet"  class="row justify-content-center">
+        <div *ngFor="let survey of roomSurvey.surveySet" class="card col-3 m-4" style="width: 18rem;">
+          <div  class="card-body">
+            <h6 class="card-subtitle mb-2 text-muted">{{ roomSurvey.room.created | date:'short' }}</h6>
+            <h5 class="card-title text-center">{{ roomSurvey.room.game.name }}: {{ survey.playerTemplate.playerUsername }}</h5>
+            <hr>
+            
+            <div class="card-text">
+              <div *ngFor="let skill of survey.skills" class="row">
+                <div class="col-7">{{ skill.skill.name }}</div>
+                <button class="btn col-2 mr-1 mb-1" (click)="submitSurvey(roomSurvey.room.roomId, survey.playerTemplate, skill.skill, 1)">
+                  <span style="color:green"><fa-icon [icon]="faThumbsUp"></fa-icon></span>
+                </button>
+                <button class="btn col-2 mb-1" (click)="submitSurvey(roomSurvey.room.roomId, survey.playerTemplate, skill.skill, -1)">
+                  <span style="color:red"><fa-icon [icon]="faThumbsDown"></fa-icon></span>
+                </button>
+              </div>
+
+            </div>
           </div>
         </div>
+        <br/>
       </div>
-      <br/>
     </div>
 </div>
 

@@ -17,8 +17,12 @@ export class SurveysService {
     return this.http.post<Room[]>(this.url, user);
   }
 
+  getSurveys(user: User) {
+    return this.http.post(this.url + "/Player", user);
+  }
+
   getSurveysByRoom(user: User, roomId: number) {
-    return this.http.post<Room[]>(this.url + "/Room/Id/" + roomId, user);
+    return this.http.post(this.url + "/Room/Id/" + roomId, user);
   }
 
   submitSurvey(roomId: number, player: User, modifiedBy: User, skill: Skill, value: number) {
@@ -29,7 +33,7 @@ export class SurveysService {
       value: value,
     }
     console.log(surveyTemplate);
-    return this.http.post<String>(this.url + "/Room/Id/" + roomId + "/Submit", surveyTemplate);
+    return this.http.post(this.url + "/Room/Id/" + roomId + "/Submit", surveyTemplate);
   }
 
 }

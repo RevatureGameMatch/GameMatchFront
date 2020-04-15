@@ -3,6 +3,10 @@ import { User } from 'src/app/models/users';
 import { StorageMap } from '@ngx-pwa/local-storage';
 import { Observable } from 'rxjs';
 import { SurveysService } from 'src/app/services/surveys.service';
+import { faThumbsDown } from '@fortawesome/free-solid-svg-icons';
+import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
+import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import { Skill } from 'src/app/models/skill';
 
 @Component({
   selector: 'app-surveys',
@@ -12,7 +16,11 @@ import { SurveysService } from 'src/app/services/surveys.service';
 export class SurveysComponent implements OnInit {
   user: User;
   user$: Observable<User>;
-  rooms;
+  roomSurveySet;
+  faThumbsDown = faThumbsDown;
+  faThumbsUp = faThumbsUp;
+  faCheckCircle = faCheckCircle;
+  completed: boolean;
 
   constructor(
     private storage: StorageMap,
@@ -25,13 +33,27 @@ export class SurveysComponent implements OnInit {
       (result) => { 
         this.user = result;
 
-        this.surveyService.getRooms(this.user).subscribe(
+        this.surveyService.getSurveys(this.user).subscribe(
           (result) => {
-            this.rooms = result;
+            this.roomSurveySet = result;
+            
           }
         )
       }
     );
+  }
+
+  submitSurvey(roomId: number, player: User, skill: Skill, value: number) {
+    this.completed = true;
+    this.surveyService.submitSurvey(roomId, player, this.user, skill, value).subscribe(
+      (result) => {
+        // @ts-ignore
+        console.log(result.message);
+      },
+      (error) => {
+        console.log(error);
+      }
+    )
   }
 
 }
