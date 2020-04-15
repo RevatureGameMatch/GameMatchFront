@@ -9,18 +9,19 @@
         </div>
       </div>
 
-      <!-- <div class="row justify-content-center">
+      <div class="row justify-content-center">
         <div *ngFor="let survey of surveys" class="card col-3 m-4" style="width: 18rem;">
           <div class="card-body">
-            <h5 class="card-title">Game:  | Player: </h5>
-            <h6 class="card-subtitle mb-2 text-muted">Game Created: </h6>
-            <div *ngFor="let skill of skills" class="card-text">
+            <h5 class="card-title">Game: {{ survey.game.name }}</h5>
+            <h5 class="card-title">Player: </h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{ survey.created | date:'short' }}</h6>
+            <!-- <div *ngFor="let skill of skills" class="card-text">
               <span>{{ skill.name }}</span>
               <span></span>
-            </div>
+            </div> -->
           </div>
         </div>
-      </div> -->
+      </div>
       <br/>
     </div>
 </div>
