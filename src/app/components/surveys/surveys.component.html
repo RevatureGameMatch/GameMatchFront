@@ -19,14 +19,20 @@
             <div class="card-text">
               <div *ngFor="let skill of survey.skills" class="row">
                 <div class="col-7">{{ skill.skill.name }}</div>
-                <button class="btn col-2 mr-1 mb-1" (click)="submitSurvey(roomSurvey.room.roomId, survey.playerTemplate, skill.skill, 1)">
-                  <span style="color:green"><fa-icon [icon]="faThumbsUp"></fa-icon></span>
-                </button>
-                <button class="btn col-2 mb-1" (click)="submitSurvey(roomSurvey.room.roomId, survey.playerTemplate, skill.skill, -1)">
-                  <span style="color:red"><fa-icon [icon]="faThumbsDown"></fa-icon></span>
-                </button>
-              </div>
 
+                <div id="voteStatus" [class]="skill.value == 0 ? 'voted-not-yet' : skill.value > 0 ? 'voted-yes' :  'voted-no'">
+
+                  <button id="upvote" class="btn mr-1 mb-1" [disabled]="skill.clicked" [ngClass]="{ disabled : (skill.value != 0), active : (skill.value == 0) }"
+                    (click)="submitSurvey(roomSurvey.room.roomId, survey.playerTemplate, skill.skill, 1); skill.clicked = true">
+                    <span style="color:green"><fa-icon [icon]="faThumbsUp"></fa-icon></span>
+                  </button>
+
+                  <button id="downvote" class="btn  mb-1" [disabled]="skill.clicked" (click)="submitSurvey(roomSurvey.room.roomId, survey.playerTemplate, skill.skill, -1); skill.clicked = true">
+                    <span style="color:red"><fa-icon [icon]="faThumbsDown"></fa-icon></span>
+                  </button>
+
+                </div>
+              </div>
             </div>
           </div>
         </div>
