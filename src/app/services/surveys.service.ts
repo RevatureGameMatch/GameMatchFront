@@ -13,8 +13,12 @@ export class SurveysService {
 
   constructor(private http: HttpClient) { }
 
-  getSurveys(user: User) {
+  getRooms(user: User) {
     return this.http.post<Room[]>(this.url, user);
+  }
+
+  getSurveysByRoom(user: User, roomId: number) {
+    return this.http.post<Room[]>(this.url + "/Room/Id/" + roomId, user);
   }
 
   submitSurvey(roomId: number, player: User, modifiedBy: User, skill: Skill, value: number) {

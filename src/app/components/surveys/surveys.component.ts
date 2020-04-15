@@ -12,7 +12,7 @@ import { SurveysService } from 'src/app/services/surveys.service';
 export class SurveysComponent implements OnInit {
   user: User;
   user$: Observable<User>;
-  surveys;
+  rooms;
 
   constructor(
     private storage: StorageMap,
@@ -25,9 +25,9 @@ export class SurveysComponent implements OnInit {
       (result) => { 
         this.user = result;
 
-        this.surveyService.getSurveys(this.user).subscribe(
+        this.surveyService.getRooms(this.user).subscribe(
           (result) => {
-            this.surveys = result;
+            this.rooms = result;
           }
         )
       }
