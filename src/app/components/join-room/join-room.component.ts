@@ -4,6 +4,7 @@ import { User } from 'src/app/models/users';
 import { Observable } from 'rxjs';
 import { Room } from 'src/app/models/room';
 import { JoinRoomService } from 'src/app/services/join-room.service';
+import { DomSanitizer, SafeHtml, SafeStyle, SafeScript, SafeUrl, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-join-room',
@@ -15,12 +16,13 @@ export class JoinRoomComponent implements OnInit {
   user$: Observable<User>;
   room: Room;
   room$: Observable<Room>;
-  appLink;
+  appLink: SafeUrl;
   webLink;
 
   constructor(
     private storage: StorageMap,
-    private roomService: JoinRoomService,) { }
+    private roomService: JoinRoomService,
+    protected sanitizer: DomSanitizer,) { }
 
   ngOnInit(): void {
     // @ts-ignore
@@ -37,39 +39,18 @@ export class JoinRoomComponent implements OnInit {
 
             this.roomService.getDiscordLink(this.user, this.room).subscribe(
               (result) => {
-                console.log(result);
                 // @ts-ignore
-                this.appLink = result.urlApp;
+                this.appLink = this.sanitizer.bypassSecurityTrustUrl(result.urlApp);
                 // @ts-ignore
                 this.webLink = result.urlWeb;
                 // @ts-ignore
-                window.open(this.appLink);
+                window.open(result.urlApp);
               }
             )
           }
         );
       }
     );
-
-    // @ts-ignore
-    // this.room$ = this.storage.get<Room>('currentRoom');
-    // this.room$.subscribe(
-    //   (result) => {
-    //     this.room = result;
-    //     this.roomService.getDiscordLink(this.user, this.room).subscribe(
-    //       (link) => {
-    //         console.log(link);
-    //       }
-    //     )
-    //   }
-    // );
-    
-    // this.roomService.getDiscordLink(this.user, this.room).subscribe(
-    //   (link) => {
-    //     console.log(link);
-    //   }
-    // )
-
   }
 
 }
