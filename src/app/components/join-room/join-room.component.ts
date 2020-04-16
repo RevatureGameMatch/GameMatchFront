@@ -51,6 +51,11 @@ export class JoinRoomComponent implements OnInit {
         );
       }
     );
+    
+    setTimeout(() => {
+      location.assign("/surveys");
+    }, 660000);
+    
   }
 
 }

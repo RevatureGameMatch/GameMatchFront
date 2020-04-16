@@ -1,5 +1,3 @@
-
-
 <div *ngIf="user; else login">
     <div class="container justify-content-center">
       <div class="row justify-content-center mt-3">
@@ -11,15 +9,23 @@
 
       <div *ngIf="success == true">
         <div class="row justify-content-center">
-            <div class="alert alert-success">{{ message }}</div>
+            <div class="alert alert-success">{{ successMessage }}</div>
         </div>
       </div>
 
       <div *ngIf="failure == true">
         <div class="row justify-content-center">
-            <div class="alert alert-danger">{{ message }}</div>
+            <div class="alert alert-danger">{{ failureMessage }}</div>
         </div>
       </div>
+
+      <!-- <div *ngIf="success == false && failure == false">
+        <div class="row justify-content-center">
+            <div class="alert alert-warning">Your feedback helps the G2G community build their soft skills. 
+              View your profile to see how you've been ranked.
+            </div>
+        </div>
+      </div> -->
 
       <div *ngFor="let roomSurvey of roomSurveySet"  class="row justify-content-center">
         <div *ngFor="let survey of roomSurvey.surveySet" class="card col-3 m-4" style="width: 18rem;">
@@ -30,16 +36,17 @@
             
             <div class="card-text">
               <div *ngFor="let skill of survey.skills" class="row">
-                <div class="col-7">{{ skill.skill.name }} {{ skill.value }}</div>
+                <div class="col-7">{{ skill.skill.name }}</div>
 
                 <div id="voteStatus" [class]="skill.value == 0 ? 'voted-not-yet' : skill.value > 0 ? 'voted-yes' :  'voted-no'">
 
                   <button id="upvote" class="btn mr-1 mb-1" [disabled]="skill.clicked" [ngClass]="{ disabled : (skill.value != 0), active : (skill.value == 0) }"
-                    (click)="submitSurvey(roomSurvey.room.roomId, survey.playerTemplate, skill.skill, 1); skill.clicked = true">
+                  (click)="submitSurvey(roomSurvey.room.roomId, survey.playerTemplate, skill.skill, 1); skill.clicked = true">
                     <span style="color:green"><fa-icon [icon]="faThumbsUp"></fa-icon></span>
                   </button>
 
-                  <button id="downvote" class="btn  mb-1" [disabled]="skill.clicked" (click)="submitSurvey(roomSurvey.room.roomId, survey.playerTemplate, skill.skill, -1); skill.clicked = true">
+                  <button id="downvote" class="btn  mb-1" [disabled]="skill.clicked" [ngClass]="{ disabled : (skill.value != 0), active : (skill.value == 0) }" 
+                  (click)="submitSurvey(roomSurvey.room.roomId, survey.playerTemplate, skill.skill, -1); skill.clicked = true">
                     <span style="color:red"><fa-icon [icon]="faThumbsDown"></fa-icon></span>
                   </button>
 

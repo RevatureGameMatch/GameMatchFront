@@ -22,7 +22,8 @@ export class SurveysComponent implements OnInit {
   faCheckCircle = faCheckCircle;
   success: boolean;
   failure: boolean;
-  message: string;
+  successMessage: string;
+  failureMessage: string;
 
   constructor(
     private storage: StorageMap,
@@ -52,15 +53,16 @@ export class SurveysComponent implements OnInit {
       (result) => {
         // @ts-ignore
         console.log(result.message);
-        // @ts-ignore
+        this.failure = false;
         this.success = true;
         // @ts-ignore
-        this.message = result.message;
+        this.successMessage = result.message;
       },
       (error) => {
-        console.log(error.error.message);
+        console.log(error);
+        this.success = false;
         this.failure = true;
-        this.message = error.error.message;
+        this.failureMessage = error.error.message;
       }
     )
   }
