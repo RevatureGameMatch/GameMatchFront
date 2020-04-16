@@ -4,6 +4,7 @@ import { User } from 'src/app/models/users';
 import { StorageMap } from '@ngx-pwa/local-storage';
 import { Router } from '@angular/router';
 import { SkillsService } from 'src/app/services/skills.service';
+import { faAward } from '@fortawesome/free-solid-svg-icons'
 
 @Component({
   selector: 'app-profile',
@@ -14,6 +15,7 @@ export class ProfileComponent implements OnInit {
   user$: Observable<User>;
   user: User;
   skills;
+  faAward = faAward;
 
   constructor(
     private storage: StorageMap,
