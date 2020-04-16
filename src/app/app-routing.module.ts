@@ -12,6 +12,7 @@ import { SurveysComponent } from './components/surveys/surveys.component';
 import { SupportedGamesComponent } from './components/supported-games/supported-games.component';
 import { JoinRoomComponent } from './components/join-room/join-room.component';
 import { PlaystyleComponent } from './components/playstyle/playstyle.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -31,6 +32,7 @@ const routes: Routes = [
   { path: 'surveys', component: SurveysComponent },
   { path: 'supported-games', component: SupportedGamesComponent },
   { path: 'room/id', component: JoinRoomComponent },
+  { path: 'profile', component: ProfileComponent },
 ]
 
 @NgModule({
