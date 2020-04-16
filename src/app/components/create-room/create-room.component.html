@@ -19,11 +19,17 @@
         <div class="text-left">
           <div class="row">
             <div class="col-md-6">
-              <h3 class="text-light">Search all games:</h3>
+              <!-- <h3 class="text-light">Search all games:</h3> -->
             </div>
 
             <div class="col-md-6">
-              <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="search text goes here">
+              <div class="input-group">
+                <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="Search games...">
+                <div class="input-group-append">
+                  <span class="input-group-text" id="searchIcon"><fa-icon [icon]="faSearch"></fa-icon></span>
+                </div>
+              </div>
+
             </div>    
           </div>
         </div>
@@ -47,14 +53,14 @@
   <!--Original Form-->
       <div class="col-lg-6">
         <div class="row justify-content-center m-3"> 
-          <div class="col"><h1 class="text-light">Create a New Room:</h1></div>
+          <div class="col"><h1 class="text-light">Create A New Room</h1></div>
         </div>
     
       <form (ngSubmit)="onSubmit()" [formGroup]="roomForm" class="text-left">
 
         <div class="form-group">
           <label class="text-light" for="name">Room Name:</label>
-          <input type="text" class="form-control" formControlName="name" placeholder="Room Name" name="name" id="name" size="45">
+          <input type="text" class="form-control" formControlName="name" placeholder="Room name" name="name" id="name" size="45">
 
         </div>
 
