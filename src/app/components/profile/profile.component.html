@@ -16,11 +16,13 @@
           </thead>
           <tbody>
               <tr *ngFor="let skill of skills">
-                <td [class]="skill.value > 150 ? 'text-success' : 'text-light'">{{ skill.skill.name }}</td>
-                <td [class]="skill.value > 150 ? 'text-success' : 'text-light'">
-                  <span>{{ skill.value | number:'3.1' }}</span>
-                  <span *ngIf="skill.value > 150" class="ml-2"><fa-icon [icon]="faAward"></fa-icon></span>
+                <td >
+                  <span>{{ skill.skill.name }}</span>
+                  <span *ngIf="skill.value > 150" [class]="skill.value > 150 ? 'text-success m-2' : 'text-light'">
+                    <fa-icon [icon]="faAward"></fa-icon>
+                  </span>
                 </td>
+                <td [class]="skill.value > 150 ? 'text-success' : 'text-light'">{{ skill.value | number:'3.1' }}</td>
               </tr>
           </tbody>
         </table>
