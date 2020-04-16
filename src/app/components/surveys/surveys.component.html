@@ -9,6 +9,18 @@
         </div>
       </div>
 
+      <div *ngIf="success == true">
+        <div class="row justify-content-center">
+            <div class="alert alert-success">{{ message }}</div>
+        </div>
+      </div>
+
+      <div *ngIf="failure == true">
+        <div class="row justify-content-center">
+            <div class="alert alert-danger">{{ message }}</div>
+        </div>
+      </div>
+
       <div *ngFor="let roomSurvey of roomSurveySet"  class="row justify-content-center">
         <div *ngFor="let survey of roomSurvey.surveySet" class="card col-3 m-4" style="width: 18rem;">
           <div  class="card-body">
@@ -18,7 +30,7 @@
             
             <div class="card-text">
               <div *ngFor="let skill of survey.skills" class="row">
-                <div class="col-7">{{ skill.skill.name }}</div>
+                <div class="col-7">{{ skill.skill.name }} {{ skill.value }}</div>
 
                 <div id="voteStatus" [class]="skill.value == 0 ? 'voted-not-yet' : skill.value > 0 ? 'voted-yes' :  'voted-no'">
 

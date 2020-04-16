@@ -20,13 +20,17 @@ export class SurveysComponent implements OnInit {
   faThumbsDown = faThumbsDown;
   faThumbsUp = faThumbsUp;
   faCheckCircle = faCheckCircle;
-  completed: boolean;
+  success: boolean;
+  failure: boolean;
+  message: string;
 
   constructor(
     private storage: StorageMap,
     private surveyService: SurveysService) { }
 
   ngOnInit(): void {
+    this.success = false;
+    this.failure = false;
     // @ts-ignore
     this.user$ = this.storage.get<User>('currentUser');
     this.user$.subscribe(
@@ -44,14 +48,19 @@ export class SurveysComponent implements OnInit {
   }
 
   submitSurvey(roomId: number, player: User, skill: Skill, value: number) {
-    this.completed = true;
     this.surveyService.submitSurvey(roomId, player, this.user, skill, value).subscribe(
       (result) => {
         // @ts-ignore
         console.log(result.message);
+        // @ts-ignore
+        this.success = true;
+        // @ts-ignore
+        this.message = result.message;
       },
       (error) => {
-        console.log(error);
+        console.log(error.error.message);
+        this.failure = true;
+        this.message = error.error.message;
       }
     )
   }
