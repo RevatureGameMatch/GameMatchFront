@@ -12,10 +12,14 @@
 
       <div *ngIf="user | async as jsonUser; else login">
         <span class="m-2">
-          <a routerLink="/dashboard">Dashboard</a>
+          <button routerLink="/dashboard" class="btn bg-transparent text-primary">
+            <div><fa-icon [icon]="faHome" class="mr-2"></fa-icon>Dashboard</div>
+          </button>
         </span>
         <span class="m-2">
-          <a routerLink="/profile">Profile</a>
+          <button routerLink="/profile" class="btn bg-transparent text-primary">
+            <div><fa-icon [icon]="faUser" class="mr-2"></fa-icon>Profile</div>
+          </button>
         </span>
         <a (click)="logout()" class="btn btn-outline-light text-light m-2">Logout</a>
       </div>

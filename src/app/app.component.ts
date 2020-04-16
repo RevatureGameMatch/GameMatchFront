@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from './models/users';
-import { StorageMap, LocalStorage } from '@ngx-pwa/local-storage';
+import { StorageMap } from '@ngx-pwa/local-storage';
 import { Router } from '@angular/router';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { faHome } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +14,8 @@ import { Router } from '@angular/router';
 export class AppComponent {
   titleAbbreviated = 'G2G';
   user: Observable<typeof User>;
+  faUser = faUser;
+  faHome = faHome;
 
   constructor(
     private storage: StorageMap,
