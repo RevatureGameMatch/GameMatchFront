@@ -18,3 +18,7 @@
 .input-group fa-icon {
   position: relative;
 }
+
+caption {
+  color: transparent;
+}
