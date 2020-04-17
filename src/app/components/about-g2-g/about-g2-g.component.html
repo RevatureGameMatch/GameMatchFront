@@ -15,7 +15,7 @@
             technical skills. Join the G2G community today!
         </p>
       </div>
-      <div *ngIf="user | async as userx; else signup"></div>
+      <div *ngIf="user$ | async; else signup"></div>
       <ng-template #signup>
         <div class="col-12 text-center">
           <a routerLink="/signup" class="btn btn-outline-light text-light m-2">Sign Up Now</a>

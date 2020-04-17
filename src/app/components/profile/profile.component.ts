@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/models/users';
 import { StorageMap } from '@ngx-pwa/local-storage';
-import { Router } from '@angular/router';
 import { SkillsService } from 'src/app/services/skills.service';
 import { faAward } from '@fortawesome/free-solid-svg-icons'
 
@@ -20,7 +19,6 @@ export class ProfileComponent implements OnInit {
 
   constructor(
     private storage: StorageMap,
-    private router: Router,
     private skillsService: SkillsService,
     ) {}
 
@@ -33,15 +31,17 @@ export class ProfileComponent implements OnInit {
         // @ts-ignore
         this.user = result;
         this.isLoaded = true;
-        console.log(this.user);
 
-        this.skillsService.getSkills(this.user).subscribe(
-          (result) => {
-            console.log(result);
-            this.skills = result;
-          }
-        )
-      }
+        if (this.user != undefined) {
+          this.skillsService.getSkills(this.user).subscribe(
+            (result) => {
+              this.skills = result;
+            },
+            (error) => {}
+          )
+        }
+      },
+      (error) => {}
     )
   }
 }

@@ -31,7 +31,6 @@ export class SupportedGamesComponent implements OnInit {
         this.user = result
         if (this.user != null && (this.user.playerRole == "MODERATOR" || this.user.playerRole == "ADMIN")) {
           this.isModerator = true;
-          console.log(this.user, "; isModerator: " + this.isModerator);
         }
       }
     );
@@ -39,12 +38,10 @@ export class SupportedGamesComponent implements OnInit {
     this.gameService.getGames().subscribe(
       (result) => {
         this.games = result;
-        console.log(this.games);
-
+      },
+      (error) => {
+        console.log(error.error);
       }
     )
-    
   }
-
-
 }

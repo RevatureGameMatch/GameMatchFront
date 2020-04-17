@@ -41,33 +41,32 @@ export class SurveysComponent implements OnInit {
         this.user = result;
         this.isLoaded = true;
 
-        this.surveyService.getSurveys(this.user).subscribe(
-          (result) => {
-            this.roomSurveySet = result;
-            
-          }
-        )
-      }
+        if (this.user != undefined) {
+          this.surveyService.getSurveys(this.user).subscribe(
+            (result) => {
+              this.roomSurveySet = result;
+            },
+            (error) => {}
+          )
+        }
+      },
+      (error) => {}
     );
   }
 
   submitSurvey(roomId: number, player: User, skill: Skill, value: number) {
     this.surveyService.submitSurvey(roomId, player, this.user, skill, value).subscribe(
       (result) => {
-        // @ts-ignore
-        console.log(result.message);
         this.failure = false;
         this.success = true;
         // @ts-ignore
         this.successMessage = result.message;
       },
       (error) => {
-        console.log(error);
         this.success = false;
         this.failure = true;
         this.failureMessage = error.error.message;
       }
     )
   }
-
 }

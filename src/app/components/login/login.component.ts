@@ -15,7 +15,6 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   expanded: boolean;
 
-  // Validates that username and password entries are not null
   username = new FormControl('', Validators.required);
   password = new FormControl('', Validators.required);
 
@@ -44,8 +43,6 @@ export class LoginComponent implements OnInit {
         (error) => {
           this.expanded = true;
         }
-      );
-
-    this.loginForm.reset(); 
+      ); 
   }
 }

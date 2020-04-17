@@ -22,15 +22,16 @@ export class CreateAccountComponent implements OnInit {
   errorExists: boolean;
   errorMessage: string;
 
-  constructor(private cas: CreateAccountService, private formBuilder: FormBuilder) {
-    this.accForm = this.formBuilder.group({
-
-      email: this.email,
-      username: this.username,
-      password: this.password
-
-    })
-
+  constructor(
+    private cas: CreateAccountService, 
+    private formBuilder: FormBuilder) {
+      this.accForm = this.formBuilder.group(
+      {
+        email: this.email,
+        username: this.username,
+        password: this.password
+      }
+    )
   }
 
   ngOnInit(): void {
@@ -44,9 +45,7 @@ export class CreateAccountComponent implements OnInit {
      this.cas.createAccount(a).subscribe(
       (input) => { 
         this.expanded = true; 
-
       },
-
       (errorObj) => {
         this.errorExists = true;
         if (errorObj.error.message == "Email Taken") {
@@ -55,9 +54,7 @@ export class CreateAccountComponent implements OnInit {
         if (errorObj.error.message == "Username Taken") {
           this.errorMessage = "The username " + errorObj.error.playerUsername + " already exists.";
         }
-
       }
     );
-    // this.accForm.reset();  
   }
 }

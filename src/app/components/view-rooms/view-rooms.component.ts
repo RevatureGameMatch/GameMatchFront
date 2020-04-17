@@ -4,10 +4,7 @@ import { StorageMap } from '@ngx-pwa/local-storage';
 import { User } from 'src/app/models/users';
 import { Room } from 'src/app/models/room';
 import { Observable } from 'rxjs';
-import { ActivatedRoute, Router, ParamMap } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
-import { Game } from 'src/app/models/game';
-import { GetGamesService } from 'src/app/services/get-games.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-join-room',
@@ -39,7 +36,6 @@ export class ViewRoomsComponent implements OnInit {
     this.user$.subscribe(
       (result) => {
         this.user = result
-        console.log(this.user);
         this.isLoaded = true;
 
         if (this.gameId) {
@@ -47,8 +43,8 @@ export class ViewRoomsComponent implements OnInit {
           this.rooms$.subscribe(
             (result) => {
               this.noGames = (result == null);
-              console.log(this.noGames);
-            }
+            },
+            (error) => {}
           );
 
         } else if (this.style == 'casual') {
@@ -56,8 +52,8 @@ export class ViewRoomsComponent implements OnInit {
           this.rooms$.subscribe(
             (result) => {
               this.noGames = (result == null);
-              console.log(this.noGames);
-            }
+            },
+            (error) => {}
           );
 
         } else if (this.style == 'serious') {
@@ -65,8 +61,8 @@ export class ViewRoomsComponent implements OnInit {
           this.rooms$.subscribe(
             (result) => {
               this.noGames = (result == null);
-              console.log(this.noGames);
-            }
+            },
+            (error) => {}
           );
 
         } else if (this.style == 'hybrid') {
@@ -74,8 +70,8 @@ export class ViewRoomsComponent implements OnInit {
           this.rooms$.subscribe(
             (result) => {
               this.noGames = (result == null);
-              console.log(this.noGames);
-            }
+            },
+            (error) => {}
           );
         }
       }

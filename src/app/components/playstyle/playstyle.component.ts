@@ -20,7 +20,6 @@ export class PlaystyleComponent implements OnInit {
     this.user$.subscribe(
       (result) => {
         this.user = result
-        console.log(this.user);
         this.isLoaded = true;
       }
     )

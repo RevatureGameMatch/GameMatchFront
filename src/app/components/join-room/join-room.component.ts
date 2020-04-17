@@ -4,7 +4,7 @@ import { User } from 'src/app/models/users';
 import { Observable } from 'rxjs';
 import { Room } from 'src/app/models/room';
 import { JoinRoomService } from 'src/app/services/join-room.service';
-import { DomSanitizer, SafeHtml, SafeStyle, SafeScript, SafeUrl, SafeResourceUrl } from '@angular/platform-browser';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-join-room',
@@ -54,11 +54,9 @@ export class JoinRoomComponent implements OnInit {
         );
       }
     );
-    
+
     setTimeout(() => {
       location.assign("/surveys");
     }, 660000);
-    
   }
-
 }

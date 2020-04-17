@@ -9,13 +9,13 @@ import { Observable } from 'rxjs';
   styleUrls: ['./about-g2-g.component.css']
 })
 export class AboutG2GComponent implements OnInit {
-  user: Observable<typeof User>;
+  user$: Observable<User>;
 
   constructor(private storage: StorageMap) { }
 
   ngOnInit(): void {
     // @ts-ignore
-    this.user = this.storage.get<User>("currentUser");
+    this.user$ = this.storage.get<User>("currentUser");
   }
 
 }
