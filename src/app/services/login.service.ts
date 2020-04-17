@@ -17,7 +17,6 @@ export class LoginService {
       playerUsername: username,
       playerPassword: password,
     }
-    console.log(loginTemplate);
     return this.http.post<User>(this.url, loginTemplate);
   }
 }

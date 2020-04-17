@@ -32,7 +32,6 @@ export class SurveysService {
       skill: skill,
       value: value,
     }
-    console.log(surveyTemplate);
     return this.http.post(this.url + "/Room/Id/" + roomId + "/Submit", surveyTemplate);
   }
 

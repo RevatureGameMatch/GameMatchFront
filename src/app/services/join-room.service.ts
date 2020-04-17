@@ -19,8 +19,6 @@ export class JoinRoomService {
       sender: sender,
       room: room,
     }
-    console.log(playerRoomTemplate);
-    console.log(JSON.stringify(playerRoomTemplate));
     return this.http.post<Object>(this.url, playerRoomTemplate);
   }
 }
