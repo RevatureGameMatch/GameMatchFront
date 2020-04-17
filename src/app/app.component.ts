@@ -13,18 +13,23 @@ import { faHome } from '@fortawesome/free-solid-svg-icons';
 })
 export class AppComponent {
   titleAbbreviated = 'G2G';
-  user: Observable<typeof User>;
+  user$: Observable<User>;
+  user: User;
   faUser = faUser;
   faHome = faHome;
 
   constructor(
     private storage: StorageMap,
-    private router: Router,
     ) {}
 
   ngOnInit(): void{
     // @ts-ignore
-    this.user = this.storage.get<User>('currentUser');
+    this.user$ = this.storage.get<User>('currentUser');
+    this.user$.subscribe(
+      (result) => {
+        this.user = result;
+      }
+    )
   }
 
   logout(): void{
