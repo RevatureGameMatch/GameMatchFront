@@ -21,6 +21,7 @@ export class ViewRoomsComponent implements OnInit {
   gameId;
   style;
   noGames: boolean;
+  isLoaded: boolean;
 
   constructor(
     private viewService: ViewRoomsService,
@@ -31,6 +32,7 @@ export class ViewRoomsComponent implements OnInit {
   ngOnInit(): void {
     this.gameId = this.route.snapshot.paramMap.get('id');
     this.style = this.route.snapshot.paramMap.get('style');
+    this.isLoaded = false;
 
     // @ts-ignore
     this.user$ = this.storage.get<User>('currentUser');
@@ -38,6 +40,7 @@ export class ViewRoomsComponent implements OnInit {
       (result) => {
         this.user = result
         console.log(this.user);
+        this.isLoaded = true;
 
         if (this.gameId) {
           this.rooms$ = this.viewService.getRoomsByGame(this.user, this.gameId);  

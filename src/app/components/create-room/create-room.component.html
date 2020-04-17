@@ -12,7 +12,7 @@
   </div>
 </div>
 
-<div *ngIf="user$ | async; else login">
+<div *ngIf="user">
   <div *ngIf="expanded == false" class="container text-center text-light">
     <div class="row justify-content-center m-3">
       <div class="col-lg-6">
@@ -116,13 +116,13 @@
 
 
 
-<ng-template #login>
+<div *ngIf="(user === undefined) && isLoaded">
   <div class="container text-light text-center">
     <div class="row justify-content-center">
       <div class="alert alert-info mt-3 col-5">You are not logged in.</div>
     </div>
   </div>
   <app-login></app-login>
-</ng-template>
+</div>
 
 

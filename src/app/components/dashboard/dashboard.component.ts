@@ -11,11 +11,20 @@ import { Observable } from 'rxjs';
 export class DashboardComponent implements OnInit {
 
   user$: Observable<User>;
+  user;
+  isLoaded: boolean;
 
   constructor(private storage: StorageMap) { }
 
   ngOnInit(): void {
+    this.isLoaded = false;
     // @ts-ignore
     this.user$ = this.storage.get<User>('currentUser');
+    this.user$.subscribe(
+      (result) => {
+        this.user = result;
+        this.isLoaded = true;
+      }
+    )
   }
 }

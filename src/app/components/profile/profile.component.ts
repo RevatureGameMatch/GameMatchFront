@@ -16,6 +16,7 @@ export class ProfileComponent implements OnInit {
   user: User;
   skills;
   faAward = faAward;
+  isLoaded: boolean;
 
   constructor(
     private storage: StorageMap,
@@ -24,12 +25,14 @@ export class ProfileComponent implements OnInit {
     ) {}
 
   ngOnInit(): void{
+    this.isLoaded = false;
     // @ts-ignore
     this.user$ = this.storage.get<User>('currentUser');
     this.user$.subscribe(
       (result) => {
         // @ts-ignore
         this.user = result;
+        this.isLoaded = true;
         console.log(this.user);
 
         this.skillsService.getSkills(this.user).subscribe(

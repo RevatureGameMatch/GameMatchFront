@@ -10,15 +10,18 @@ import { User } from 'src/app/models/users';
 export class PlaystyleComponent implements OnInit {
   user$;
   user;
+  isLoaded: boolean;
 
   constructor(private storage: StorageMap) { }
 
   ngOnInit(): void {
+    this.isLoaded = false;
     this.user$ = this.storage.get<User>('currentUser');
     this.user$.subscribe(
       (result) => {
         this.user = result
         console.log(this.user);
+        this.isLoaded = true;
       }
     )
   }

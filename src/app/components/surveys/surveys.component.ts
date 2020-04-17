@@ -24,6 +24,7 @@ export class SurveysComponent implements OnInit {
   failure: boolean;
   successMessage: string;
   failureMessage: string;
+  isLoaded: boolean;
 
   constructor(
     private storage: StorageMap,
@@ -32,11 +33,13 @@ export class SurveysComponent implements OnInit {
   ngOnInit(): void {
     this.success = false;
     this.failure = false;
+    this.isLoaded = false;
     // @ts-ignore
     this.user$ = this.storage.get<User>('currentUser');
     this.user$.subscribe(
       (result) => { 
         this.user = result;
+        this.isLoaded = true;
 
         this.surveyService.getSurveys(this.user).subscribe(
           (result) => {

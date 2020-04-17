@@ -18,6 +18,7 @@ export class JoinRoomComponent implements OnInit {
   room$: Observable<Room>;
   appLink: SafeUrl;
   webLink;
+  isLoaded: boolean;
 
   constructor(
     private storage: StorageMap,
@@ -25,11 +26,13 @@ export class JoinRoomComponent implements OnInit {
     protected sanitizer: DomSanitizer,) { }
 
   ngOnInit(): void {
+    this.isLoaded = false;
     // @ts-ignore
     this.user$ = this.storage.get<User>('currentUser');
     this.user$.subscribe(
       (result) => {
         this.user = result;
+        this.isLoaded = true;
 
         // @ts-ignore
         this.room$ = this.storage.get<Room>('currentRoom');

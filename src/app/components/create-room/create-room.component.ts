@@ -39,6 +39,7 @@ export class CreateRoomComponent implements OnInit {
   expanded: boolean;
 
   createdRoom: number;
+  isLoaded: boolean;
 
   constructor(private crs: CreateRoomService, private formBuilder: FormBuilder, private storage: StorageMap) {
     this.roomForm = this.formBuilder.group({
@@ -54,6 +55,7 @@ export class CreateRoomComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.isLoaded = false;
     this.expanded = false;
     // @ts-ignore
     this.user$ = this.storage.get<User>('currentUser');
@@ -61,7 +63,7 @@ export class CreateRoomComponent implements OnInit {
       (result) => {
         this.user = result
         console.log(this.user);
-
+        this.isLoaded = true;
     
       }
     );
