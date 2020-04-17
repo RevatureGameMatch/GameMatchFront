@@ -5,6 +5,7 @@ import { User } from 'src/app/models/users';
 import { Room } from 'src/app/models/room';
 import { Observable } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
+import { faUsers, faUserLock, faPlus } from '@fortawesome/free-solid-svg-icons'
 
 @Component({
   selector: 'app-join-room',
@@ -12,6 +13,9 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./view-rooms.component.css']
 })
 export class ViewRoomsComponent implements OnInit {
+  faUsers = faUsers;
+  faUserLock = faUserLock;
+  faPlus = faPlus;
   user: User;
   user$: Observable<User>;
   rooms$: Observable<Room[]>;
