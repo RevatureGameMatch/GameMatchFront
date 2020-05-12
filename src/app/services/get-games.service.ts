@@ -17,7 +17,7 @@ export class GetGamesService {
   }
 
   getGameById(id) {
-    return this.http.get<Game>(this.url + "/id/" + id);
+    return this.http.get<Game>(this.url + "id/" + id);
   }
 
   getGameFromAPI(id: number) {

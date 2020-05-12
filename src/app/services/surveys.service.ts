@@ -3,13 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { User } from '../models/users';
 import { Room } from '../models/room';
 import { Skill } from '../models/skill';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SurveysService {
 
-  url = "http://www.revatureprojects.com:8085/g2g/Survey";
+  url = environment.surveyUri;
 
   constructor(private http: HttpClient) { }
 
@@ -18,11 +19,11 @@ export class SurveysService {
   }
 
   getSurveys(user: User) {
-    return this.http.post(this.url + "/Player", user);
+    return this.http.post(this.url + "Player", user);
   }
 
   getSurveysByRoom(user: User, roomId: number) {
-    return this.http.post(this.url + "/Room/Id/" + roomId, user);
+    return this.http.post(this.url + "Room/Id/" + roomId, user);
   }
 
   submitSurvey(roomId: number, player: User, modifiedBy: User, skill: Skill, value: number) {
@@ -32,7 +33,7 @@ export class SurveysService {
       skill: skill,
       value: value,
     }
-    return this.http.post(this.url + "/Room/Id/" + roomId + "/Submit", surveyTemplate);
+    return this.http.post(this.url + "Room/Id/" + roomId + "/Submit", surveyTemplate);
   }
 
 }
