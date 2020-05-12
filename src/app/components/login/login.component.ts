@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { StorageMap, LocalStorage } from '@ngx-pwa/local-storage';
+import { StorageMap } from '@ngx-pwa/local-storage';
 import { LoginService } from 'src/app/services/login.service';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import { User } from 'src/app/models/users';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +13,6 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   expanded: boolean;
 
-  // Validates that username and password entries are not null
   username = new FormControl('', Validators.required);
   password = new FormControl('', Validators.required);
 
@@ -44,8 +41,6 @@ export class LoginComponent implements OnInit {
         (error) => {
           this.expanded = true;
         }
-      );
-
-    this.loginForm.reset(); 
+      ); 
   }
 }

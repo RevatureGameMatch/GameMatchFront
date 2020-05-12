@@ -1,4 +1,4 @@
-<div *ngIf="user; else login" class="container text-center text-light">
+<div *ngIf="user" class="container text-center text-light">
   <div class="row justify-content-center mt-3">
     <div class="col">
       <h1>Joining Room...</h1>
@@ -12,13 +12,17 @@
     <h4>Game: {{ room.game.name }}</h4>
     <h4>Room: {{ room.name }}</h4>
     <br/>
-    <a href="{{ link }}" class="btn btn-primary mt-2 mb-5">Join Discord Room</a>
+    <a [href]="appLink" class="btn btn-primary m-4 mb-2">Join in App</a>
+    <a href="{{ webLink }}" target="_blank" class="btn btn-outline-primary text-primary m-4 mb-2">Join in Browser</a>
   </div>
 
 </div>
 
-<ng-template #login>
-    <div class="container text-center text-light">
-      <h2>You are not logged in.</h2>
+<div *ngIf="(user === undefined) && isLoaded">
+  <div class="container text-light text-center">
+    <div class="row justify-content-center">
+      <div class="alert alert-info mt-3 col-5">You are not logged in.</div>
     </div>
-</ng-template>
+  </div>
+  <app-login></app-login>
+</div>

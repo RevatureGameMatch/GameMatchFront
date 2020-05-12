@@ -5,14 +5,23 @@
 
       <ul class="nav nav-tabs mr-auto">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/supported-games">Games</a>
+          <button class="nav-link bg-transparent text-primary" routerLink="/supported-games">
+            <div><fa-icon [icon]="faGamepad" class="mr-2"></fa-icon>Games</div>
+          </button>
         </li>
       </ul>
       
 
-      <div *ngIf="user | async as jsonUser; else login">
+      <div *ngIf="user; else login">
         <span class="m-2">
-          <a routerLink="/dashboard">Dashboard</a>
+          <button routerLink="/dashboard" class="btn bg-transparent text-primary">
+            <div><fa-icon [icon]="faHome" class="mr-2"></fa-icon>Dashboard</div>
+          </button>
+        </span>
+        <span class="m-2">
+          <button routerLink="/profile" class="btn bg-transparent text-primary">
+            <div><fa-icon [icon]="faUser" class="mr-2"></fa-icon>{{ user.playerUsername }}</div>
+          </button>
         </span>
         <a (click)="logout()" class="btn btn-outline-light text-light m-2">Logout</a>
       </div>

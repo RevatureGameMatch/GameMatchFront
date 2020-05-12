@@ -14,4 +14,11 @@
     float: none;
     margin: 0 auto;
 }
-  
+
+.input-group fa-icon {
+  position: relative;
+}
+
+caption {
+  color: transparent;
+}

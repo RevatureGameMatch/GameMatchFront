@@ -4,6 +4,7 @@ import { User } from 'src/app/models/users';
 import { Observable } from 'rxjs';
 import { Room } from 'src/app/models/room';
 import { JoinRoomService } from 'src/app/services/join-room.service';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-join-room',
@@ -15,29 +16,38 @@ export class JoinRoomComponent implements OnInit {
   user$: Observable<User>;
   room: Room;
   room$: Observable<Room>;
-  link;
+  appLink: SafeUrl;
+  webLink;
+  isLoaded: boolean;
 
   constructor(
     private storage: StorageMap,
-    private roomService: JoinRoomService,) { }
+    private roomService: JoinRoomService,
+    protected sanitizer: DomSanitizer,) { }
 
   ngOnInit(): void {
+    this.isLoaded = false;
     // @ts-ignore
     this.user$ = this.storage.get<User>('currentUser');
     this.user$.subscribe(
       (result) => {
         this.user = result;
+        this.isLoaded = true;
+
         // @ts-ignore
         this.room$ = this.storage.get<Room>('currentRoom');
         this.room$.subscribe(
           (result) => {
             this.room = result;
+
             this.roomService.getDiscordLink(this.user, this.room).subscribe(
               (result) => {
-                console.log(result);
                 // @ts-ignore
-                this.link = result.message;
-                window.open(this.link.message);
+                this.appLink = this.sanitizer.bypassSecurityTrustUrl(result.urlApp);
+                // @ts-ignore
+                this.webLink = result.urlWeb;
+                // @ts-ignore
+                window.open(result.urlApp);
               }
             )
           }
@@ -45,25 +55,8 @@ export class JoinRoomComponent implements OnInit {
       }
     );
 
-    // @ts-ignore
-    // this.room$ = this.storage.get<Room>('currentRoom');
-    // this.room$.subscribe(
-    //   (result) => {
-    //     this.room = result;
-    //     this.roomService.getDiscordLink(this.user, this.room).subscribe(
-    //       (link) => {
-    //         console.log(link);
-    //       }
-    //     )
-    //   }
-    // );
-    
-    // this.roomService.getDiscordLink(this.user, this.room).subscribe(
-    //   (link) => {
-    //     console.log(link);
-    //   }
-    // )
-
+    setTimeout(() => {
+      location.assign("/surveys");
+    }, 660000);
   }
-
 }

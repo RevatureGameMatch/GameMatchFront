@@ -1,0 +1,8 @@
+.card-body {
+    display: flex;
+    flex-direction: column;
+  }
+  
+.card-link {
+    margin-top: auto;
+}

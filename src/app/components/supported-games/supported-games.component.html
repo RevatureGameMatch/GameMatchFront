@@ -1,28 +1,27 @@
 <div class="container justify-content-center">
     <div class="row justify-content-center mt-3">
-        <div class="col-4"></div>
-        <div class="col-4 text-center text-light">
-          <h1>Join Room</h1>
-          <hr>
-        </div>
-        <div class="col-4 text-right">
-          <!-- TODO: Implement add game functionality -->
-          <!-- <div *ngIf="isModerator" class="btn btn-primary">Add Game</div> -->
-        </div>
+      <div class="text-center text-light">
+        <h1>Supported Games</h1>
+        <hr>
+      </div>
+
+      <!-- TODO: Implement add game functionality -->
+      <!-- <div *ngIf="isModerator" class="btn btn-primary">Add Game</div> -->
     </div>
 
+<!-- Retrieves a picture from Rawg API and inserts it into a card -->
     <div class="row justify-content-center">
       <div *ngFor="let game of games" class="card col-3 m-4" style="width: 18rem;">
-        <!-- TODO: Pull images from API -->
-        <!-- <img src="{{ image }}" class="card-img-top" alt="..."> -->
+        <img src="{{ ((game.rawgId | image) | async)?.background_image }}" class="card-img-top pt-2" alt="">
         <div class="card-body">
           <h5 class="card-title">{{ game.name }}</h5>
           <p class="card-text">{{ game.description }}</p>
-          <a href="{{ game.link }}" class="card-link">Website Link</a>
-          <a routerLink="/dashboard" class="card-link">Join Rooms</a>
+          <div class="card-link">
+            <a href="{{ game.link }}" class="mr-3">Website Link</a>
+            <button routerLink="/rooms/game/{{ game.gameId }}" class="btn btn-outline-primary">Join Rooms</button>
+          </div>
         </div>
       </div>
     </div>
     <br/>
-
 </div>

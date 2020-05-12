@@ -1,0 +1,41 @@
+<div *ngIf="user" class="container text-center text-light">
+    <div class="row justify-content-center mt-3">
+      <div class="col">
+        <h1>{{ user.playerUsername }}'s Skills</h1>
+        <hr>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <table class="table table-hover w-auto" style="width: 50%">
+          <caption>Table of player's skills and skill levels</caption>
+          <thead>
+            <tr>
+              <th style="width: 25%" scope="col">Skill</th>
+              <th style="width: 15%" scope="col">Score</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let skill of skills">
+                <td >
+                  <span>{{ skill.skill.name }}</span>
+                  <span *ngIf="skill.value > 150" [class]="skill.value > 150 ? 'text-success m-2' : 'text-light'">
+                    <fa-icon [icon]="faAward"></fa-icon>
+                  </span>
+                </td>
+                <td [class]="skill.value > 150 ? 'text-success' : 'text-light'">{{ skill.value | number:'3.1' }}</td>
+              </tr>
+          </tbody>
+        </table>
+      </div>
+    <br/>
+</div>
+
+<div *ngIf="(user === undefined) && isLoaded">
+  <div class="container text-light text-center">
+    <div class="row justify-content-center">
+      <div class="alert alert-info mt-3 col-5">You are not logged in.</div>
+    </div>
+  </div>
+  <app-login></app-login>
+</div>

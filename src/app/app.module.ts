@@ -16,6 +16,10 @@ import { ViewRoomsComponent } from './components/view-rooms/view-rooms.component
 import { SurveysComponent } from './components/surveys/surveys.component';
 import { SupportedGamesComponent } from './components/supported-games/supported-games.component';
 import { JoinRoomComponent } from './components/join-room/join-room.component';
+import { ImagePipe } from './components/supported-games/image.pipe';
+import { PlaystyleComponent } from './components/playstyle/playstyle.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +35,9 @@ import { JoinRoomComponent } from './components/join-room/join-room.component';
     FilterPipe,
     SupportedGamesComponent,
     JoinRoomComponent,
+    ImagePipe,
+    PlaystyleComponent,
+    ProfileComponent,
 
   ],
   imports: [
@@ -40,6 +47,7 @@ import { JoinRoomComponent } from './components/join-room/join-room.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    FontAwesomeModule,
 
   ],
   providers: [],

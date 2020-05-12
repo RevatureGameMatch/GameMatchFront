@@ -1,16 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/models/users';
 import { StorageMap } from '@ngx-pwa/local-storage';
-import { Observable } from 'rxjs';
+import { User } from 'src/app/models/users';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  selector: 'app-playstyle',
+  templateUrl: './playstyle.component.html',
+  styleUrls: ['./playstyle.component.css']
 })
-export class DashboardComponent implements OnInit {
-
-  user$: Observable<User>;
+export class PlaystyleComponent implements OnInit {
+  user$;
   user;
   isLoaded: boolean;
 
@@ -18,13 +16,13 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLoaded = false;
-    // @ts-ignore
     this.user$ = this.storage.get<User>('currentUser');
     this.user$.subscribe(
       (result) => {
-        this.user = result;
+        this.user = result
         this.isLoaded = true;
       }
     )
   }
+
 }

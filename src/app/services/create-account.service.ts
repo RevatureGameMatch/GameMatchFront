@@ -14,7 +14,6 @@ export class CreateAccountService {
   url = environment.playerUri;
 
   createAccount(f:AccountForm): Observable<AccountForm>{
-    console.log(f);
     return this.http.post<AccountForm>(this.url, f);
   }
 

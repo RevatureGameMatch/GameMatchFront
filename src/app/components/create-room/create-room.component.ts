@@ -6,6 +6,7 @@ import { User } from 'src/app/models/users';
 import { Observable } from 'rxjs';
 import { StorageMap } from '@ngx-pwa/local-storage';
 import { Game } from 'src/app/models/game';
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 @Component({
 
@@ -16,11 +17,10 @@ import { Game } from 'src/app/models/game';
 })
 export class CreateRoomComponent implements OnInit {
 
-
+  faSearch = faSearch;
   searchText: string;
   roomForm: FormGroup;
   user: User;
-
   user$: Observable<User>;
 
   name = new FormControl('', Validators.maxLength(50));
@@ -30,43 +30,44 @@ export class CreateRoomComponent implements OnInit {
   maxP= new FormControl('', Validators.required);
 
   Room: Room;
-
   Games: Game[];
-
   Style: String[] = ['Casual', 'Hybrid', 'Serious'];
 
   expanded: boolean;
-
   createdRoom: number;
+  isLoaded: boolean;
 
-  constructor(private crs: CreateRoomService, private formBuilder: FormBuilder, private storage: StorageMap) {
-    this.roomForm = this.formBuilder.group({
-
-      name: this.name,
-      style: this.style,
-      desc: this.desc,
-      game: this.game,
-      maxP: this.maxP
-
-    })
-
+  constructor(
+    private crs: CreateRoomService, 
+    private formBuilder: FormBuilder, 
+    private storage: StorageMap) {
+      this.roomForm = this.formBuilder.group(
+        {
+          name: this.name,
+          style: this.style,
+          desc: this.desc,
+          game: this.game,
+          maxP: this.maxP
+        }
+      )
    }
 
   ngOnInit(): void {
+    this.isLoaded = false;
     this.expanded = false;
     // @ts-ignore
     this.user$ = this.storage.get<User>('currentUser');
     this.user$.subscribe(
       (result) => {
-        this.user = result
-        console.log(this.user);
-
-    
+        this.user = result;
+        this.isLoaded = true;
       }
     );
 
     this.crs.getGames().subscribe(
-     (result)=>{this.Games = result}
+     (result) => {
+       this.Games = result;
+      }
    );
   }
 
@@ -80,13 +81,10 @@ export class CreateRoomComponent implements OnInit {
     let u = this.user;
   
     this.crs.createRoom(u,r).subscribe(
-      (value)=>{
-        this.storage.set('currentRoom', value).subscribe(() => {
-          
-        })
+      (value) => {
+        this.storage.set('currentRoom', value).subscribe(() => {});
         this.createdRoom = Object.values(value)[0];
         this.expanded = true;
-        console.log(this.createdRoom);
       },
       (error)=>{
         alert("Unable to create room.");
@@ -96,14 +94,12 @@ export class CreateRoomComponent implements OnInit {
   }
 
   changeGame(g) {
-    console.log(g.value)
     this.game.setValue(g.target.value, {
       onlySelf: true
     })
   }
 
   changeStyle(s) {
-    console.log(s.value)
     this.style.setValue(s.target.value, {
       onlySelf: true
     })
