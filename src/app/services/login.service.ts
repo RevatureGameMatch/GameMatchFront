@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../models/users';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  url = "http://www.revatureprojects.com:8085/g2g/PlayerLogin";
+  url = environment.playerLoginUri;
 
   constructor(private http: HttpClient) { }
 
@@ -17,7 +18,6 @@ export class LoginService {
       playerUsername: username,
       playerPassword: password,
     }
-    console.log(loginTemplate);
     return this.http.post<User>(this.url, loginTemplate);
   }
 }

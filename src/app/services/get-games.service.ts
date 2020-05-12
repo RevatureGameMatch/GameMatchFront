@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Game } from '../models/game';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GetGamesService {
 
-  url = "http://www.revatureprojects.com:8085/g2g/Game";
+  url = environment.gameUri;
 
   constructor(private http: HttpClient) { }
 

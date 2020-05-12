@@ -3,13 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { Room } from '../models/room';
 import { User } from '../models/users';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class JoinRoomService {
 
-  url = "http://www.revatureprojects.com:8085/g2g/Room/Player";
+  url = environment.roomUri;
 
   constructor(private http: HttpClient) { }
 
@@ -21,6 +22,6 @@ export class JoinRoomService {
     }
     console.log(playerRoomTemplate);
     console.log(JSON.stringify(playerRoomTemplate));
-    return this.http.post<Object>(this.url, playerRoomTemplate);
+    return this.http.post<Object>(this.url + 'Player/', playerRoomTemplate);
   }
 }
