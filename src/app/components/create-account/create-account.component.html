@@ -1,5 +1,5 @@
-<div *ngIf="expanded == false" class="container text-center text-light">
-  <div class="row justify-content-center m-3"> 
+<div *ngIf="expanded == false" class="text-center text-light g2g-container-tight d-flex flex-column">
+  <div class="justify-content-center m-3"> 
     <div class="col">
       <h1 class="text-light">Sign Up</h1>
       <hr>
@@ -7,12 +7,12 @@
   </div>
 
   <div *ngIf="errorExists == true">
-    <div class="row justify-content-center">
-      <div class="alert alert-danger col-5">{{ errorMessage }}</div>
+    <div class="justify-content-center">
+      <div class="alert alert-danger">{{ errorMessage }}</div>
     </div>
   </div>
 
-  <div class="row justify-content-center">
+  <div class="justify-content-center">
     <form (ngSubmit)="onSubmit()" [formGroup]="accForm" class="text-left">
 
       <div class="form-group">
@@ -42,7 +42,7 @@
       </span>
       </div>
 
-      <div class="row justify-content-center p-4">
+      <div class="justify-content-center p-4">
         <button type="submit" class="btn btn-primary btn-block" [disabled]="!accForm.valid">Submit</button>
       </div>
 
@@ -51,14 +51,14 @@
 </div>
 
 
-<div *ngIf="expanded == true" class="container justify-content-center text-light">
+<div *ngIf="expanded == true" class="justify-content-center text-light g2g-container-tight d-flex flex-column">
   <div class="col-md-4 col-centered">
-    <div class="row">
+    <div class="">
       <h2 class="text-light" style="text-align:center">You have successfully created an account!</h2>
     </div>
 
     <a routerLink="/login">
-      <div class="row justify-content-center p-4">
+      <div class="justify-content-center p-4">
         <button class="btn btn-primary btn-block" size="45">Login</button>
       </div>
     </a>  

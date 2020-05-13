@@ -15,7 +15,7 @@
           <div><fa-icon [icon]="faHome" class="mr-2"></fa-icon>Dashboard</div>
         </button>
       </li>
-      <li *ngIf="user" class="flex-grow">
+      <li *ngIf="user" class="g2g-margin-left-computer">
         <button routerLink="/profile" class="nav-link bg-transparent text-primary">
           <div><fa-icon [icon]="faUser" class="mr-2"></fa-icon>{{ user.playerUsername }}</div>
         </button>
@@ -24,10 +24,10 @@
         <button (click)="logout()" class="btn btn-outline-light text-light mx-2"><div>Logout</div></button>
       </li>
       <ng-template #login>
-        <li>
+        <li class="g2g-margin-left-computer">
           <button routerLink="/signup" class="btn bg-transparent text-primary"><div>Sign Up</div></button>
         </li>
-        <li class="flex-grow">
+        <li>
           <button routerLink="/login" class="btn btn-primary m-2"><div>Login</div></button>
         </li>
       </ng-template>

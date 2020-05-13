@@ -25,4 +25,7 @@ nav ul.hidden{
         display:flex;
         justify-content: center;
     }
+    .g2g-margin-left-computer{
+        margin-left: auto;
+    }
 }
