@@ -1,20 +1,20 @@
-<div class="container text-center text-light">
+<div class="d-flex flex-column text-center text-light">
 
-    <div class="row justify-content-center m-3">
-        <div class="col">
+    <div class="justify-content-center m-3">
+        <div>
             <h1>Login</h1>
             <hr>
         </div>
     </div>
 
     <div *ngIf="expanded == true">
-        <div class="row justify-content-center">
-            <div class="alert alert-danger col-5">Invalid username or password. Please try again.</div>
+        <div class="justify-content-center">
+            <div class="alert alert-danger">Invalid username or password. Please try again.</div>
         </div>
     </div>
 
-    <div class="row justify-content-center">
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)" class="text-left">
+    <div class="justify-content-center">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)" class="text-left g2g-container-tight">
 
             <div class="form-group">
                 <label for="username">Username</label>
@@ -32,7 +32,7 @@
                 </span>
             </div>
 
-            <div class="row justify-content-center p-4">
+            <div class="justify-content-center p-4">
                 <button type="submit" class="btn btn-primary btn-block" [disabled]="!loginForm.valid">Login</button>
             </div>
 
