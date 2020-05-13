@@ -1,5 +1,5 @@
-<div class="container justify-content-center">
-    <div class="row justify-content-center mt-3">
+<div class="d-flex flex-column justify-content-center">
+    <div class="justify-content-center mt-3">
       <div class="text-center text-light">
         <h1>Supported Games</h1>
         <hr>
@@ -10,12 +10,12 @@
     </div>
 
 <!-- Retrieves a picture from Rawg API and inserts it into a card -->
-    <div class="row justify-content-center">
-      <div *ngFor="let game of games" class="card col-3 m-4" style="width: 18rem;">
+    <div class="justify-content-center d-flex flex-wrap">
+      <div *ngFor="let game of games" class="card m-4" style="width: 18rem;">
         <img src="{{ ((game.rawgId | image) | async)?.background_image }}" class="card-img-top pt-2" alt="">
         <div class="card-body">
-          <h5 class="card-title">{{ game.name }}</h5>
-          <p class="card-text">{{ game.description }}</p>
+          <h5 class="card-title text-dark">{{ game.name }}</h5>
+          <p class="card-text text-dark">{{ game.description }}</p>
           <div class="card-link">
             <a href="{{ game.link }}" class="mr-3">Website Link</a>
             <button routerLink="/rooms/game/{{ game.gameId }}" class="btn btn-outline-primary">Join Rooms</button>
