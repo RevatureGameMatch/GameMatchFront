@@ -1,44 +1,45 @@
-<div class="d-flex flex-column outer-container">
+<div class="d-flex flex-column g2g-page-container">
   <nav class="navbar bg-dark d-flex flex-column">
-    <div class="container">
-      <a id="title" routerLink="/home" class="navbar-brand text-light">{{titleAbbreviated}}</a>
-
-      <ul class="nav nav-tabs mr-auto">
-        <li class="nav-item">
-          <button class="nav-link bg-transparent text-primary" routerLink="/supported-games">
-            <div><fa-icon [icon]="faGamepad" class="mr-2"></fa-icon>Games</div>
-          </button>
-        </li>
-      </ul>
-      
-
-      <div *ngIf="user; else login">
-        <span class="m-2">
-          <button routerLink="/dashboard" class="btn bg-transparent text-primary">
-            <div><fa-icon [icon]="faHome" class="mr-2"></fa-icon>Dashboard</div>
-          </button>
-        </span>
-        <span class="m-2">
-          <button routerLink="/profile" class="btn bg-transparent text-primary">
-            <div><fa-icon [icon]="faUser" class="mr-2"></fa-icon>{{ user.playerUsername }}</div>
-          </button>
-        </span>
-        <a (click)="logout()" class="btn btn-outline-light text-light m-2">Logout</a>
-      </div>
-
+    <button (click)="showNav()" class="bg-transparent text-primary mr-auto btn" id="nav-toggle">Show Nav</button>
+    <ul class="nav nav-tabs w-100 hidden" id="nav-items">
+      <li>
+        <button id="title" routerLink="/home" class="navbar-brand text-light bg-transparent btn">{{titleAbbreviated}}</button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link bg-transparent text-primary" routerLink="/supported-games">
+          <div><fa-icon [icon]="faGamepad" class="mr-2"></fa-icon>Games</div>
+        </button>
+      </li>
+      <li *ngIf="user; else login">
+        <button routerLink="/dashboard" class="nav-link bg-transparent text-primary">
+          <div><fa-icon [icon]="faHome" class="mr-2"></fa-icon>Dashboard</div>
+        </button>
+      </li>
+      <li *ngIf="user" class="flex-grow">
+        <button routerLink="/profile" class="nav-link bg-transparent text-primary">
+          <div><fa-icon [icon]="faUser" class="mr-2"></fa-icon>{{ user.playerUsername }}</div>
+        </button>
+      </li>
+      <li *ngIf="user">
+        <button (click)="logout()" class="btn btn-outline-light text-light mx-2"><div>Logout</div></button>
+      </li>
       <ng-template #login>
-        <div>
-          <a routerLink="/signup" class="btn btn-outline-primary text-primary m-2">Sign Up</a>
-          <a routerLink="/login" class="btn btn-primary m-2"><strong>Login</strong></a>
-        </div>
+        <li>
+          <button routerLink="/signup" class="btn bg-transparent text-primary"><div>Sign Up</div></button>
+        </li>
+        <li class="flex-grow">
+          <button routerLink="/login" class="btn btn-primary m-2"><div>Login</div></button>
+        </li>
       </ng-template>
-    </div>
+    </ul>
   </nav>
 
-  <router-outlet></router-outlet>
+  <div  class="g2g-flex-grow">
+    <router-outlet></router-outlet>
+  </div>
   
-  <footer class="container">
-    <div class="fixed-bottom text-light text-center bg-dark">Designed by Kayla Filio, Philip Lawrence, and Nancy Yuan.</div>
+  <footer>
+    <div class="text-light text-center bg-dark">Designed by Kayla Filio, Philip Lawrence, and Nancy Yuan.</div>
   </footer>
   
 </div>

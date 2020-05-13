@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,cAAc,CAAA;EACV,IAAI,EAAE,CAAC;CACV",
+    "sources": [
+        "g2g-flex.scss"
+    ],
+    "names": [],
+    "file": "g2g-flex.css"
+}

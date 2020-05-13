@@ -35,6 +35,10 @@ export class AppComponent {
     this.storage.clear().subscribe(() => {
       location.assign('/home');
     });
+  }
 
+  showNav(): void{
+    let navItems = document.getElementById("nav-items");
+    navItems.classList.toggle("hidden");
   }
 }

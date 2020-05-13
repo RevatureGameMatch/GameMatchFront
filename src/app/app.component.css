@@ -1,0 +1,28 @@
+.g2g-page-container{
+    height: 100vh;
+    top: 0;
+}
+nav ul.nav-tabs{
+    border-bottom: unset;
+}
+nav ul{
+    flex-direction: column;
+}
+nav ul.hidden{
+    display: none;
+}
+@media (min-width: 550px) and (orientation: landscape) {
+    nav ul{
+        flex-direction: row;
+    }
+    nav ul.hidden{
+        display: flex;
+    }
+    #nav-toggle{
+        display: none;
+    }
+    nav ul li{
+        display:flex;
+        justify-content: center;
+    }
+}
