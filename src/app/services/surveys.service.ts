@@ -19,11 +19,11 @@ export class SurveysService {
   }
 
   getSurveys(user: User) {
-    return this.http.post(this.url + "Player", user);
+    return this.http.post(this.url + "player/", user);
   }
 
   getSurveysByRoom(user: User, roomId: number) {
-    return this.http.post(this.url + "Room/Id/" + roomId, user);
+    return this.http.post(this.url + "room/id/" + roomId, user);
   }
 
   submitSurvey(roomId: number, player: User, modifiedBy: User, skill: Skill, value: number) {
@@ -33,7 +33,7 @@ export class SurveysService {
       skill: skill,
       value: value,
     }
-    return this.http.post(this.url + "Room/Id/" + roomId + "/Submit", surveyTemplate);
+    return this.http.post(this.url + "room/id/" + roomId + "/submit", surveyTemplate);
   }
 
 }

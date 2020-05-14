@@ -12,12 +12,12 @@ export const environment = {
   production: false,
   environmentName: 'Default Environment',
   baseUri: `${baseUri}/`,
-  gameUri: `${baseUri}Game/`,
-  helloUri: `${baseUri}Hello/`,
-  playerUri: `${baseUri}Player/`,
-  playerLoginUri: `${baseUri}PlayerLogin/`,
-  roomUri: `${baseUri}Room/`,
-  surveyUri: `${baseUri}Survey/`,
+  gameUri: `${baseUri}game/`,
+  helloUri: `${baseUri}hello/`,
+  playerUri: `${baseUri}player/`,
+  playerLoginUri: `${baseUri}player-login/`,
+  roomUri: `${baseUri}room/`,
+  surveyUri: `${baseUri}survey/`,
 };
 
 /*

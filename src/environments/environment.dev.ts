@@ -1,7 +1,7 @@
-const baseUri = `https://www.back.g2g.revatureprojects.com/g2g/`;
+const baseUri = `http://localhost:8097/g2g/`;
 export const environment = {
-  production: true,
-  environmentName: 'Production Environment',
+  production: false,
+  environmentName: 'Dev Environment',
   baseUri: `${baseUri}/`,
   gameUri: `${baseUri}game/`,
   helloUri: `${baseUri}hello/`,

@@ -20,6 +20,6 @@ export class JoinRoomService {
       sender: sender,
       room: room,
     }
-    return this.http.post<Object>(this.url + 'Player/', playerRoomTemplate);
+    return this.http.post<Object>(this.url + 'player/', playerRoomTemplate);
   }
 }

@@ -13,6 +13,6 @@ export class SkillsService {
   constructor(private http: HttpClient) { }
 
   getSkills(user: User) {
-    return this.http.get(this.url + "Id/" + user.playerId + "/Skills");
+    return this.http.get(this.url + "id/" + user.playerId + "/skills");
   }
 }

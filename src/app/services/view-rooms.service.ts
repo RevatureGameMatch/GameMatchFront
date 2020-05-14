@@ -15,30 +15,30 @@ export class ViewRoomsService {
   constructor(private http: HttpClient) { }
 
   getCasualRooms(user: User) {
-    return this.http.post<Room[]>(this.url + "Style/Casual", user);
+    return this.http.post<Room[]>(this.url + "style/casual", user);
   }
 
   getSeriousRooms(user: User) {
-    return this.http.post<Room[]>(this.url + "Style/Serious", user);
+    return this.http.post<Room[]>(this.url + "style/serious", user);
   }
 
   getHybridRooms(user: User) {
-    return this.http.post<Room[]>(this.url + "Style/Hybrid", user);
+    return this.http.post<Room[]>(this.url + "style/hybrid", user);
   }
 
   getRoomsByGame(user: User, gameId) {
-    return this.http.post<Room[]>(this.url + "Game/Id/" + gameId, user);
+    return this.http.post<Room[]>(this.url + "game/id/" + gameId, user);
   }
 
   getCasualRoomsByGame(user: User, gameId) {
-    return this.http.post<Room[]>(this.url + "Game/Casual/" + gameId, user);
+    return this.http.post<Room[]>(this.url + "game/casual/" + gameId, user);
   }
 
   getSeriousRoomsByGame(user: User, gameId) {
-    return this.http.post<Room[]>(this.url + "Game/Serious/" + gameId, user);
+    return this.http.post<Room[]>(this.url + "game/serious/" + gameId, user);
   }
 
   getHybridRoomsByGame(user: User, gameId) {
-    return this.http.post<Room[]>(this.url + "Game/Hybrid/" + gameId, user);
+    return this.http.post<Room[]>(this.url + "game/hybrid/" + gameId, user);
   }
 }
