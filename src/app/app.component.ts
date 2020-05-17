@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from './models/users';
 import { StorageMap } from '@ngx-pwa/local-storage';
-import { faUser, faHome, faGamepad } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faHome, faGamepad, faBars } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +16,7 @@ export class AppComponent {
   faUser = faUser;
   faHome = faHome;
   faGamepad = faGamepad;
+  faBars = faBars;
 
   constructor(
     private storage: StorageMap,
