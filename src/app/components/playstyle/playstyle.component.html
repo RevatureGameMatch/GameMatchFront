@@ -1,19 +1,19 @@
 <div *ngIf="user">
 
-    <div class="container text-center text-light">
-        <div class="row justify-content-center mt-3">
-        <div class="col">
+    <div class="d-flex flex-column justify-content-center">
+        <div class="text-center text-light mt-3">
             <h1>Join Room</h1>
             <hr>
         </div>
-        </div>
 
-        <div class="row mt-5">
-        <div class="col-12 text-center mt-5">
+        <div class="d-flex flex-column justify-content-center">
+        <div class="text-center mt-5">
             <h2 class="mb-5">What kind of player are you?</h2>
-            <a routerLink="/rooms/casual" class="btn-lg btn-secondary text-light m-5">Casual</a>
-            <a routerLink="/rooms/serious" class="btn-lg btn-primary text-light m-5">Serious</a>
-            <a routerLink="/rooms/hybrid" class="btn-lg btn-success text-light m-5">Hybrid</a>
+            <div class="d-flex flex-wrap justify-content-center">
+              <a routerLink="/rooms/casual" class="btn-lg btn-secondary text-light mb-2 mx-5">Casual</a>
+              <a routerLink="/rooms/serious" class="btn-lg btn-primary text-light mb-2 mx-5">Serious</a>
+              <a routerLink="/rooms/hybrid" class="btn-lg btn-success text-light mb-2 mx-5">Hybrid</a>
+            </div>
         </div>
         </div>
     </div>
