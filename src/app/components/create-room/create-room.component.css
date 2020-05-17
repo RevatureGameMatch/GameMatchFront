@@ -1,3 +1,23 @@
+#searchTable {
+  margin-left: auto;
+  margin-right: 60px;
+  width: 30%;
+}
+
+#form {
+  margin-right: auto;
+}
+
+@media screen and (max-width: 770px){
+  #searchTable {
+    display: none;
+    visibility: hidden;
+  }
+  #form {
+    margin: unset;
+  }
+}
+
 .table-wrap {
     height: 625px;
     overflow-y: auto;
