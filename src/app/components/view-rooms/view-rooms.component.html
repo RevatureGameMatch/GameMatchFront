@@ -1,25 +1,44 @@
 <div *ngIf="user">
 
-  <div class="container text-light">
-    <div class="row justify-content-center mt-3">
+  <div class="d-flex flex-column">
+    <div class="justify-content-center mt-3">
 
-      <div class="col-4">
-        <div class="btn-group" role="group" aria-label="Button group for playstyle">
-          <button type="button" class="btn btn-outline-secondary" (click)="filterCasual()">Casual</button>
-          <button type="button" class="btn btn-outline-secondary" (click)="filterSerious()">Serious</button>
-          <button type="button" class="btn btn-outline-secondary" (click)="filterHybrid()">Hybrid</button>
-          <button *ngIf="gameId" type="button" class="btn btn-outline-secondary" (click)="filterAll()">All</button>
+      <div class="d-flex flex-wrap justify-content-around">
+
+        <div class="btn-group g2g-btn-group-computer" role="group" aria-label="Button group for playstyle">
+          <button type="button" class="btn btn-outline-secondary py-0" (click)="filterCasual()"
+          [ngStyle]="{ 'font-weight': style == 'casual' ? 'bold' : 'normal' }">Casual</button>
+          <button type="button" class="btn btn-outline-secondary py-0" (click)="filterSerious()"
+          [ngStyle]="{ 'font-weight': style == 'serious' ? 'bold' : 'normal' }">Serious</button>
+          <button type="button" class="btn btn-outline-secondary py-0" (click)="filterHybrid()"
+          [ngStyle]="{ 'font-weight': style == 'hybrid' ? 'bold' : 'normal' }">Hybrid</button>
+          <button *ngIf="gameId" type="button" class="btn btn-outline-secondary py-0" (click)="filterAll()"
+          [ngStyle]="{ 'font-weight': style == 'all' ? 'bold' : 'normal' }">All</button>
         </div>
-      </div>
+        
+        <div id="h2">
+          <h2>Available Rooms</h2>
+        </div>
 
-      <div class="col-4 text-center">
-        <h2>Available Rooms</h2>
-        <hr>
-      </div>
+        <div class="my-auto">
+          <div routerLink="/create-room" class="btn btn-secondary">Create A Room</div>
+        </div>
 
-      <div class="col-4">
-        <div routerLink="/create-room" class="btn btn-secondary ml-5 float-right">Create A Room</div>
+        <div class="g2g-btn-group-mobile">
+          <div class="btn-group" role="group" aria-label="Button group for playstyle">
+            <button type="button" class="btn btn-outline-secondary" (click)="filterCasual()"
+            [ngStyle]="{ 'font-weight': style == 'casual' ? 'bold' : 'normal' }">Casual</button>
+            <button type="button" class="btn btn-outline-secondary" (click)="filterSerious()"
+            [ngStyle]="{ 'font-weight': style == 'serious' ? 'bold' : 'normal' }">Serious</button>
+            <button type="button" class="btn btn-outline-secondary" (click)="filterHybrid()"
+            [ngStyle]="{ 'font-weight': style == 'hybrid' ? 'bold' : 'normal' }">Hybrid</button>
+            <button *ngIf="gameId" type="button" class="btn btn-outline-secondary" (click)="filterAll()"
+            [ngStyle]="{ 'font-weight': style == 'all' ? 'bold' : 'normal' }">All</button>
+          </div>
+        </div>
+        
       </div>
+      <hr>
 
     <!-- TODO: Implement pagination -->
     <!-- <nav aria-label="...">
@@ -39,15 +58,14 @@
             </li>
           </ul>
         </nav> -->
-
     </div>
 
-    <div class="row justify-content-center">
-      <table class="table table-hover">
+    <div class="d-flex flex-column justify-content-center">
+      <table class="table table-hover mx-auto" style="width: 80%;">
         <caption>Table of available rooms</caption>
         <thead>
           <tr>
-            <th style="width:15%" scope="col">Playstyle</th>
+            <th class="g2g-playstyle-col-mobile" style="width:15%" scope="col">Playstyle</th>
             <th style="width:10%" scope="col"><fa-icon [icon]="faUsers"></fa-icon></th>
             <th style="width:10%" scope="col"><fa-icon [icon]="faUserLock"></fa-icon></th>
             <th style="width:25%" scope="col">Game</th>
@@ -57,7 +75,7 @@
         </thead>
         <tbody>
             <tr *ngFor="let room of rooms$ | async">
-              <td>{{ room.style }}</td>
+              <td class="g2g-playstyle-col-mobile">{{ room.style }}</td>
               <td>{{ room.currentPlayers }}</td>
               <td>{{ room.maxPlayers }}</td>
               <td>{{ room.game.name }}</td>

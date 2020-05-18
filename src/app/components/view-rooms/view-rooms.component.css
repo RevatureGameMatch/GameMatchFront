@@ -1,3 +1,32 @@
+#h2 {
+  margin-right: 90px;
+}
+
+.g2g-btn-group-mobile {
+  display: none;
+}
+
+@media screen and (max-width: 780px) {
+  #h2 {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+  }
+  .g2g-btn-group-computer {
+    display: none;
+  }
+  .g2g-btn-group-mobile {
+    display: flex;
+    width: 100%;
+    margin-top: 10px;
+    justify-content: center;
+  }
+  .g2g-playstyle-col-mobile {
+    display: none;
+  }
+}
+
 caption {
     color: transparent;
 }
