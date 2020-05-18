@@ -19,7 +19,7 @@ export class SurveysService {
   }
 
   getSurveys(user: User) {
-    return this.http.post(this.url + "player/", user);
+    return this.http.post(this.url, user);
   }
 
   getSurveysByRoom(user: User, roomId: number) {

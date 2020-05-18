@@ -44,6 +44,7 @@ export class SurveysComponent implements OnInit {
         if (this.user != undefined) {
           this.surveyService.getSurveys(this.user).subscribe(
             (result) => {
+              console.log(result);
               this.roomSurveySet = result;
             },
             (error) => {}
@@ -52,6 +53,13 @@ export class SurveysComponent implements OnInit {
       },
       (error) => {}
     );
+  }
+
+  viewSubSkills(skillName: string) {
+    let parentSkillName: string = skillName.replace(/ /g, "_");
+    console.log(parentSkillName)
+
+    console.log(document.getElementsByClassName(parentSkillName));
   }
 
   submitSurvey(roomId: number, player: User, skill: Skill, value: number) {

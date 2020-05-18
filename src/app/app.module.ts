@@ -20,6 +20,7 @@ import { ImagePipe } from './components/supported-games/image.pipe';
 import { PlaystyleComponent } from './components/playstyle/playstyle.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProfileComponent } from './components/profile/profile.component';
+import { SpaceToUnderScorePipe } from './components/surveys/space-to-under-score.pipe';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { ProfileComponent } from './components/profile/profile.component';
     ImagePipe,
     PlaystyleComponent,
     ProfileComponent,
+    SpaceToUnderScorePipe,
 
   ],
   imports: [
