@@ -1,0 +1,25 @@
+.g2g-web-link-mobile {
+  display: none;
+}
+
+#redirect-message-mobile {
+  display: none;
+}
+
+@media screen and (max-width: 800px) {
+  .g2g-web-link-mobile {
+    display: block;
+  }
+  .g2g-web-link-computer {
+    display: none;
+  }
+  .g2g-app-link-computer {
+    display: none;
+  }
+  #redirect-message-mobile {
+    display: block;
+  }
+  #redirect-message-computer {
+    display: none;
+  }
+}

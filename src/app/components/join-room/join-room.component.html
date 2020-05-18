@@ -7,13 +7,15 @@
   </div>
 
   <div class="jumbotron bg-dark" *ngIf="room">
-    <h3>You are being redirected to Discord.</h3>
+    <h3 id="redirect-message-computer">You are being redirected to Discord.</h3>
+    <h3 id="redirect-message-mobile">Join the Discord voice channel for this room.</h3>
     <br/>
     <h4>Game: {{ room.game.name }}</h4>
     <h4>Room: {{ room.name }}</h4>
     <br/>
-    <a [href]="appLink" class="btn btn-primary m-4 mb-2">Join in App</a>
-    <a href="{{ webLink }}" target="_blank" class="btn btn-outline-primary text-primary m-4 mb-2">Join in Browser</a>
+    <a [href]="appLink" class="btn btn-primary m-4 mb-2 g2g-app-link-computer">Join in App</a>
+    <a href="{{ webLink }}" target="_blank" class="btn btn-outline-primary text-primary m-4 mb-2 g2g-web-link-computer">Join in Browser</a>
+    <a href="{{ webLink }}" target="_blank" class="btn btn-primary btn-lg m-4 mb-2 g2g-web-link-mobile">Join in Discord</a>
   </div>
 
 </div>
