@@ -1,23 +1,20 @@
-<div *ngIf="expanded == true" class="container justify-content-center text-light">
-  <div class="col-md-4 col-centered">
-    <div class="row">
-      <h2 class="text-light" style="text-align:center">You have sucessfully created a new room!</h2>
-    </div>
-
-    <a routerLink="/room/id">
-      <div class="row justify-content-center p-4">
-        <button class="btn btn-primary btn-block" size="45">Join Room</button>
-      </div>
-    </a>  
-  </div>
-</div>
-
-
 <div *ngIf="user" class="d-flex flex-column justify-content-center">
 
   <div class="text-center text-light mt-3">
     <h1>Create A New Room</h1>
     <hr>
+  </div>
+
+  <div *ngIf="expanded == true" class="d-flex flex-column justify-content-center text-light">
+    <div class="g2g-container-tight">
+      <h2 class="text-light text-center">You have sucessfully created a new room!</h2>
+  
+      <a routerLink="/room/id">
+        <div class="justify-content-center p-4">
+          <button class="btn btn-primary btn-block" size="45">Join Room</button>
+        </div>
+      </a>  
+    </div>
   </div>
 
   <div *ngIf="expanded == false" class="text-center text-light">
