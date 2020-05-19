@@ -18,6 +18,12 @@
   }
 }
 
+.alert {
+  width: max-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .table-wrap {
     height: 625px;
     overflow-y: auto;
