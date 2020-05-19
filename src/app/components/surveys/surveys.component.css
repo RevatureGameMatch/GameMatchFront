@@ -1,0 +1,16 @@
+.hidden {
+  display: none;
+}
+.pointer {
+  cursor: pointer;
+}
+.voteStatus {
+  margin-left: auto;
+}
+.skill-name {
+  width: 60%;
+}
+.subskill-name {
+  width: 50%;
+  margin-left: 10%;
+}
