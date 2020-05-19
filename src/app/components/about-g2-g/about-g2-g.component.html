@@ -18,7 +18,8 @@
       <div *ngIf="user$ | async; else signup"></div>
       <ng-template #signup>
         <div class="text-center">
-          <a routerLink="/signup" class="btn btn-outline-light text-light m-2">Sign Up Now</a>
+          <a routerLink="/signup" class="btn btn-outline-light text-light mb-5 g2g-btn-computer">Sign Up Now</a>
+          <a routerLink="/signup" class="btn btn-lg btn-outline-light text-light mb-5 g2g-btn-mobile">Sign Up Now</a>
         </div>
       </ng-template>
     </div>
