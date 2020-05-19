@@ -1,12 +1,12 @@
-<div class="container text-center text-light">
-    <div class="row justify-content-center mt-3">
-      <div class="col">
+<div class="d-flex flex-column text-center text-light">
+    <div class="justify-content-center mt-3">
+      <div>
         <h1>About G2G</h1>
         <hr>
       </div>
     </div>
-    <div class="row justify-content-center mt-4">
-      <div class="col-8 text-left mt-5">
+    <div class="gtg-container justify-content-center mt-4">
+      <div class="text-left mt-5">
         <p>Game to Gain (G2G) is a video game matchmaking service that aims to foster the growth
             of players' soft skills in a low pressure environment. Players are 
             able to create or join game rooms, where they will be automatically connected to
@@ -17,7 +17,7 @@
       </div>
       <div *ngIf="user$ | async; else signup"></div>
       <ng-template #signup>
-        <div class="col-12 text-center">
+        <div class="text-center">
           <a routerLink="/signup" class="btn btn-outline-light text-light m-2">Sign Up Now</a>
         </div>
       </ng-template>
