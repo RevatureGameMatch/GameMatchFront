@@ -2,6 +2,12 @@
     height: 100vh;
     top: 0;
 }
+nav {
+  flex: 0 0 auto;
+}
+footer {
+  flex: 0 0 auto;
+}
 nav ul.nav-tabs{
     border-bottom: unset;
 }
