@@ -25,12 +25,27 @@
       <li *ngIf="user">
         <button (click)="logout()" class="btn btn-outline-light text-light mx-2"><div>Logout</div></button>
       </li>
+      <li *ngIf="user">
+        <a href="https://g2g.auth.us-east-2.amazoncognito.com/logout?client_id=1td66m0ar4lbkbntg1csdbsob8&logout_uri=https://g2g.revatureprojects.com/home">
+          <button (click)="logout()" class="btn btn-outline-light text-light mx-2"><div>Logout</div></button>
+        </a>
+      </li>
       <ng-template #login>
         <li class="g2g-margin-left-computer">
           <button routerLink="/signup" class="btn bg-transparent text-primary"><div>Sign Up</div></button>
         </li>
+        <li class="g2g-margin-left-computer">
+          <a href="https://g2g.auth.us-east-2.amazoncognito.com/signup?client_id=1td66m0ar4lbkbntg1csdbsob8&response_type=code&scope=email+openid&redirect_uri=https://g2g.revatureprojects.com/dashboard">
+            <button class="btn bg-transparent text-primary"><div>Cognito Sign Up</div></button>
+          </a>
+        </li>
         <li>
           <button routerLink="/login" class="btn btn-primary m-2"><div>Login</div></button>
+        </li>
+        <li>
+          <a href="https://g2g.auth.us-east-2.amazoncognito.com/login?client_id=1td66m0ar4lbkbntg1csdbsob8&response_type=code&scope=email+openid&redirect_uri=https://g2g.revatureprojects.com/dashboard">
+            <button class="btn btn-primary m-2"><div>Cognito Login</div></button>
+          </a>
         </li>
       </ng-template>
     </ul>
