@@ -15,6 +15,7 @@ import { faSearch, faListAlt } from '@fortawesome/free-solid-svg-icons'
   styleUrls: ['./create-room.component.css'],
 
 })
+
 export class CreateRoomComponent implements OnInit {
   
   faListAlt = faListAlt;
@@ -107,9 +108,4 @@ export class CreateRoomComponent implements OnInit {
       onlySelf: true
     })
   }
-
-  
-
- 
-
 }
