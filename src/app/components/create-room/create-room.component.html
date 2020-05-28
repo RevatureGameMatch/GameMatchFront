@@ -66,10 +66,13 @@
 
           <div class="form-group" size="45">
             <label class="text-light" for="game">Game:</label>
-            <select class="custom-select" (change)="changeGame($event)" formControlName="game">
+            <div>
+            <fa-icon [icon]="faListAlt"></fa-icon>
+            <select class="custom-select" (change)="changeGame($event)" formControlName="game" width="auto">
               <option value="" selected disabled hidden>Choose your game</option>
               <option *ngFor="let game of Games; let i = index" value="{{i}}">{{game.name}}</option>
             </select>
+          </div>
           
             <span class="text-danger" *ngIf="(game.dirty || game.touched) && game.invalid && game.errors.required">
               Game is required.

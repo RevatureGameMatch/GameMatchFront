@@ -6,7 +6,7 @@ import { User } from 'src/app/models/users';
 import { Observable } from 'rxjs';
 import { StorageMap } from '@ngx-pwa/local-storage';
 import { Game } from 'src/app/models/game';
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import { faSearch, faListAlt } from '@fortawesome/free-solid-svg-icons'
 
 @Component({
 
@@ -16,7 +16,8 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 })
 export class CreateRoomComponent implements OnInit {
-
+  
+  faListAlt = faListAlt;
   faSearch = faSearch;
   searchText: string;
   roomForm: FormGroup;
