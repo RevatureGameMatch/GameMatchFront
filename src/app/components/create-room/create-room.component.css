@@ -1,11 +1,6 @@
-#searchTable {
-  margin-left: auto;
-  margin-right: 60px;
-  width: 30%;
-}
-
-#form {
-  margin-right: auto;
+div .game-options-select{
+  max-width: calc(100% - 40px);
+  text-align: unset;
 }
 
 @media screen and (max-width: 770px){

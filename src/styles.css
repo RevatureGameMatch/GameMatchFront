@@ -1,3 +1,7 @@
+html .g2g-width-unset {
+  width: unset;
+}
+
 .g2g-container {
   margin-left: 1vw;
   margin-right: 1vw;
@@ -32,6 +36,12 @@
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+}
+
+.g2g-flex-static {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
 }
 
 /* You can add global styles to this file, and also import other style files */

@@ -6,7 +6,7 @@ import { User } from 'src/app/models/users';
 import { Observable } from 'rxjs';
 import { StorageMap } from '@ngx-pwa/local-storage';
 import { Game } from 'src/app/models/game';
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import { faSearch, faListAlt } from '@fortawesome/free-solid-svg-icons'
 
 @Component({
 
@@ -16,7 +16,8 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 })
 export class CreateRoomComponent implements OnInit {
-
+  
+  faListAlt = faListAlt;
   faSearch = faSearch;
   searchText: string;
   roomForm: FormGroup;
@@ -34,6 +35,7 @@ export class CreateRoomComponent implements OnInit {
   Style: String[] = ['Casual', 'Hybrid', 'Serious'];
 
   expanded: boolean;
+  search: boolean;
   createdRoom: number;
   isLoaded: boolean;
 
@@ -55,6 +57,7 @@ export class CreateRoomComponent implements OnInit {
   ngOnInit(): void {
     this.isLoaded = false;
     this.expanded = false;
+    this.search = false;
     // @ts-ignore
     this.user$ = this.storage.get<User>('currentUser');
     this.user$.subscribe(
