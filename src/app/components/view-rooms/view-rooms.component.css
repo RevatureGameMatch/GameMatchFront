@@ -30,3 +30,8 @@
 caption {
     color: transparent;
 }
+.alert {
+  width: max-content;
+  margin-left: auto;
+  margin-right: auto;
+}

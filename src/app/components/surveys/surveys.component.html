@@ -1,26 +1,26 @@
 <div *ngIf="user">
-    <div class="container justify-content-center">
-      <div class="row justify-content-center mt-3">
-        <div class="col text-center text-light">
+    <div class="d-flex flex-column justify-content-center">
+      <div class="justify-content-center mt-3">
+        <div class="text-center text-light">
           <h1>Surveys</h1>
           <hr>
         </div>
       </div>
 
       <div *ngIf="success == true">
-        <div class="row justify-content-center">
+        <div class="justify-content-center">
             <div class="alert alert-success">{{ successMessage }}</div>
         </div>
       </div>
 
       <div *ngIf="failure == true">
-        <div class="row justify-content-center">
+        <div class="justify-content-center">
             <div class="alert alert-danger">{{ failureMessage }}</div>
         </div>
       </div>
 
-      <div *ngFor="let roomSurvey of roomSurveySet" class="row justify-content-center text-dark">
-        <div *ngFor="let player of roomSurvey.players" class="card col-3 m-4" style="width: 18rem;">
+      <div *ngFor="let roomSurvey of roomSurveySet" class="d-flex flex-wrap justify-content-center text-dark">
+        <div *ngFor="let player of roomSurvey.players" class="card m-4" style="width: 18rem;">
           <div  class="card-body">
             <h6 class="card-subtitle mb-2 text-muted">{{ roomSurvey.room.created | date:'short' }}</h6>
             <h5 class="card-title text-center">{{ roomSurvey.room.game.name }}: {{ player.playerUsername }}</h5>
@@ -28,53 +28,56 @@
             
             <div class="card-text">
               <div *ngFor="let skill of roomSurvey.skills">
-                <div *ngIf="skill.parentSkill == null" class="row" id="{{ skill.name | spaceToUnderScore }}" (click)="viewSubSkills(skill.name)">
-                  <div class="col-7">{{ skill.name }}</div>
+                <div *ngIf="skill.parentSkill == null" id="{{ roomSurvey.room.roomId }}_{{ player.playerId }}_{{ skill.name | spaceToUnderScore }}">
+                  <div class="d-flex flex-row">
+                    <div class="skill-name pointer" (click)="viewSubSkills(roomSurvey.room.roomId, player.playerId, skill.name)">
+                      <fa-icon [icon]="faCaretDown"></fa-icon>  
+                      {{ skill.name }}
+                    </div>
 
-                  <div id="voteStatus" [class]="skill.value == 0 ? 'voted-not-yet' : skill.value > 0 ? 'voted-yes' :  'voted-no'">
-  
-                    <button id="upvote" class="btn mr-1 mb-1" [disabled]="skill.clicked" [ngClass]="{ disabled : (skill.value != 0), active : (skill.value == 0) }"
-                    (click)="submitSurvey(roomSurvey.room.roomId, roomSurvey.playerTemplate, skill.skill, 1); skill.clicked = true">
-                      <span style="color:green"><fa-icon [icon]="faThumbsUp"></fa-icon></span>
-                    </button>
-  
-                    <button id="downvote" class="btn  mb-1" [disabled]="skill.clicked" [ngClass]="{ disabled : (skill.value != 0), active : (skill.value == 0) }" 
-                    (click)="submitSurvey(roomSurvey.room.roomId, roomSurvey.playerTemplate, skill.skill, -1); skill.clicked = true">
-                      <span style="color:red"><fa-icon [icon]="faThumbsDown"></fa-icon></span>
-                    </button>
+                    <div [class]="skill.value == 0 ? 'voted-not-yet voteStatus' : skill.value > 0 ? 'voted-yes voteStatus' :  'voted-no voteStatus'">
+                      <button id="upvote" class="btn mr-1 mb-1 pointer" [disabled]="skill.clicked" [ngClass]="{ disabled : (skill.value != 0), active : (skill.value == 0) }"
+                        (click)="submitSurvey(roomSurvey.room.roomId, player, skill, 1); skill.clicked = true">
+                        <span style="color:green"><fa-icon [icon]="faThumbsUp"></fa-icon></span>
+                      </button>
+                      <button id="downvote" class="btn mb-1 pointer" [disabled]="skill.clicked" [ngClass]="{ disabled : (skill.value != 0), active : (skill.value == 0) }" 
+                        (click)="submitSurvey(roomSurvey.room.roomId, player, skill, -1); skill.clicked = true">
+                        <span style="color:red"><fa-icon [icon]="faThumbsDown"></fa-icon></span>
+                      </button>
+                    </div>
                   </div>
                 </div>
 
-                <div *ngIf="skill.parentSkill" class="{{ skill.parentSkill.name | spaceToUnderScore }} row" id="{{ skill.name }}">
-                  <div class="col-7">{{ skill.name }}</div>
+                <div *ngIf="skill.parentSkill" class="{{ roomSurvey.room.roomId }}_{{ player.playerId }}_{{ skill.parentSkill.name | spaceToUnderScore }} hidden" id="{{ skill.name }}">
+                  <div class="d-flex flex-row">
+                    <h6 class="subskill-name">{{ skill.name }}</h6>
 
-                  <div id="voteStatus" [class]="skill.value == 0 ? 'voted-not-yet' : skill.value > 0 ? 'voted-yes' :  'voted-no'">
-  
-                    <button id="upvote" class="btn mr-1 mb-1" [disabled]="skill.clicked" [ngClass]="{ disabled : (skill.value != 0), active : (skill.value == 0) }"
-                    (click)="submitSurvey(roomSurvey.room.roomId, roomSurvey.playerTemplate, skill.skill, 1); skill.clicked = true">
-                      <span style="color:green"><fa-icon [icon]="faThumbsUp"></fa-icon></span>
-                    </button>
-  
-                    <button id="downvote" class="btn  mb-1" [disabled]="skill.clicked" [ngClass]="{ disabled : (skill.value != 0), active : (skill.value == 0) }" 
-                    (click)="submitSurvey(roomSurvey.room.roomId, roomSurvey.playerTemplate, skill.skill, -1); skill.clicked = true">
-                      <span style="color:red"><fa-icon [icon]="faThumbsDown"></fa-icon></span>
-                    </button>
+                    <div [class]="skill.value == 0 ? 'voted-not-yet voteStatus' : skill.value > 0 ? 'voted-yes voteStatus' :  'voted-no voteStatus'">
+                      <button id="upvote" class="btn mr-1 mb-1 pointer" [disabled]="skill.clicked" [ngClass]="{ disabled : (skill.value != 0), active : (skill.value == 0) }"
+                        (click)="submitSurvey(roomSurvey.room.roomId, player, skill, 1); skill.clicked = true">
+                        <span style="color:green"><fa-icon [icon]="faThumbsUp"></fa-icon></span>
+                      </button>
+                      <button id="downvote" class="btn mb-1 pointer" [disabled]="skill.clicked" [ngClass]="{ disabled : (skill.value != 0), active : (skill.value == 0) }" 
+                        (click)="submitSurvey(roomSurvey.room.roomId, player, skill, -1); skill.clicked = true">
+                        <span style="color:red"><fa-icon [icon]="faThumbsDown"></fa-icon></span>
+                      </button>
+                    </div>
                   </div>
                 </div>
-
               </div>
             </div>
           </div>
         </div>
-        <br/>
+        
+        
       </div>
     </div>
 </div>
 
 <div *ngIf="(user === undefined) && isLoaded">
-  <div class="container text-light text-center">
-    <div class="row justify-content-center">
-      <div class="alert alert-info mt-3 col-5">You are not logged in.</div>
+  <div class="text-light text-center">
+    <div class="justify-content-center">
+      <div class="alert alert-info mt-3">You are not logged in.</div>
     </div>
   </div>
   <app-login></app-login>

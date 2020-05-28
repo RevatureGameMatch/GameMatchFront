@@ -1,6 +1,6 @@
-<div *ngIf="user" class="container text-center text-light">
-  <div class="row justify-content-center mt-3">
-    <div class="col">
+<div *ngIf="user" class="d-flex flex-column text-center text-light">
+  <div class="justify-content-center mt-3">
+    <div>
       <h1>Joining Room...</h1>
       <hr>
     </div>
@@ -21,9 +21,9 @@
 </div>
 
 <div *ngIf="(user === undefined) && isLoaded">
-  <div class="container text-light text-center">
-    <div class="row justify-content-center">
-      <div class="alert alert-info mt-3 col-5">You are not logged in.</div>
+  <div class="text-light text-center">
+    <div class="justify-content-center">
+      <div class="alert alert-info mt-3">You are not logged in.</div>
     </div>
   </div>
   <app-login></app-login>

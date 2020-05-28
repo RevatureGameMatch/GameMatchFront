@@ -3,9 +3,7 @@ import { User } from 'src/app/models/users';
 import { StorageMap } from '@ngx-pwa/local-storage';
 import { Observable } from 'rxjs';
 import { SurveysService } from 'src/app/services/surveys.service';
-import { faThumbsDown } from '@fortawesome/free-solid-svg-icons';
-import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
-import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import { faThumbsDown, faThumbsUp, faCheckCircle, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { Skill } from 'src/app/models/skill';
 
 @Component({
@@ -20,6 +18,7 @@ export class SurveysComponent implements OnInit {
   faThumbsDown = faThumbsDown;
   faThumbsUp = faThumbsUp;
   faCheckCircle = faCheckCircle;
+  faCaretDown = faCaretDown;
   success: boolean;
   failure: boolean;
   successMessage: string;
@@ -55,11 +54,15 @@ export class SurveysComponent implements OnInit {
     );
   }
 
-  viewSubSkills(skillName: string) {
+  viewSubSkills(roomId, playerId, skillName: string) {
     let parentSkillName: string = skillName.replace(/ /g, "_");
-    console.log(parentSkillName)
+    let parentSkillElement = document.getElementById(roomId + "_" + playerId + "_" + parentSkillName);
+    let subSkillsElements = document.getElementsByClassName(roomId + "_" + playerId + "_" + parentSkillName);
 
-    console.log(document.getElementsByClassName(parentSkillName));
+    Array.from(subSkillsElements).forEach((skill: HTMLElement) => {
+      parentSkillElement.appendChild(skill);
+      skill.classList.toggle("hidden");
+    })
   }
 
   submitSurvey(roomId: number, player: User, skill: Skill, value: number) {
@@ -67,12 +70,16 @@ export class SurveysComponent implements OnInit {
       (result) => {
         this.failure = false;
         this.success = true;
+
+        console.log(result)
         // @ts-ignore
         this.successMessage = result.message;
       },
       (error) => {
         this.success = false;
         this.failure = true;
+
+        console.log(error)
         this.failureMessage = error.error.message;
       }
     )

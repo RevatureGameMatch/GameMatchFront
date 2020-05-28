@@ -1,6 +1,6 @@
 <div *ngIf="user" class="text-center text-light d-flex flex-column">
     <div class="justify-content-center mt-3">
-      <div class="col">
+      <div>
         <h1>Welcome, {{ user.playerUsername }}!</h1>
         <hr>
       </div>
@@ -32,7 +32,7 @@
 <div *ngIf="(user === undefined) && isLoaded">
   <div class="text-light text-center">
     <div class="justify-content-center">
-      <div class="alert alert-info mt-3 g2g-container-tight">You are not logged in.</div>
+      <div class="alert alert-info mt-3">You are not logged in.</div>
     </div>
   </div>
   <app-login></app-login>
