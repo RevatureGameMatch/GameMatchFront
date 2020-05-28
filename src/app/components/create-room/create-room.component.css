@@ -8,10 +8,6 @@ div .game-options-select{
 }
 
 @media screen and (max-width: 770px){
-  /* #searchTable {
-    display: none;
-    visibility: hidden;
-  } */
   #form {
     margin: unset;
   }
