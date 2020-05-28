@@ -19,34 +19,36 @@
 
   <div *ngIf="expanded == false" class="text-center text-light">
     <div class="d-flex flex-wrap justify-content-center m-3">
-
-      <div id="searchTable" class="align-content-start">
-        <div class="input-group">
-          <input type="text" class="form-control border-right-0 border" [(ngModel)]="searchText" placeholder="Search games...">
-          <div class="input-group-append">
-            <span class="input-group-text bg-white border-left-0 border" id="searchIcon"><fa-icon [icon]="faSearch"></fa-icon></span>
+      <div *ngIf="search == true">
+        <div id="searchTable" class="align-content-start">
+          <button type="button" class="btn btn-group-primary game-button">Room Form</button>
+          <div class="input-group">
+            <input type="text" class="form-control border-right-0 border" [(ngModel)]="searchText" placeholder="Search games...">
+            <div class="input-group-append">
+              <span class="input-group-text bg-white border-left-0 border" id="searchIcon"><fa-icon [icon]="faSearch"></fa-icon></span>
+            </div>
           </div>
-        </div>
 
-        <div class="table-wrap mt-3">
-          <table class="table table-hover" id="gameTable">
-            <caption>Table of game names and descriptions.</caption>
-            <thead class="thead-light">
-              <th scope="col">Name</th>
-              <th scope="col">Description</th>
-            </thead>
-            <tbody>
-              <tr *ngFor="let game of Games | filter: searchText" >
-                <td class="col-auto">{{game.name}}</td>
-                <td class="col-auto">{{game.description}}</td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="table-wrap mt-3">
+            <table class="table table-hover" id="gameTable">
+              <caption>Table of game names and descriptions.</caption>
+              <thead class="thead-light">
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+              </thead>
+              <tbody>
+                <tr *ngFor="let game of Games | filter: searchText" >
+                  <td class="col-auto">{{game.name}}</td>
+                  <td class="col-auto">{{game.description}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
 
   <!--Original Form-->
-      <div id="form" class="justify-content-center">
+      <div id="form" *ngIf="search == false" class="justify-content-center">
         <form (ngSubmit)="onSubmit()" [formGroup]="roomForm" class="text-left g2g-container-tight">
 
           <div class="form-group">
@@ -62,14 +64,14 @@
           </div>
 
           <div class="form-group" size="45">
-            <label class="text-light" for="game">Game:</label>
-            <div>
-            <fa-icon [icon]="faListAlt"></fa-icon>
-            <select class="custom-select" (change)="changeGame($event)" formControlName="game" width="auto">
-              <option value="" selected disabled hidden>Choose your game</option>
-              <option *ngFor="let game of Games; let i = index" value="{{i}}">{{game.name}}</option>
-            </select>
-          </div>
+            <label class="text-light" for="game">Game:</label><br/>
+            <div class="btn-group d-flex">
+              <button type="button" class="btn btn-group-primary" (click)="search = true"><fa-icon [icon]="faListAlt"></fa-icon></button>
+              <select class="custom-select game-options-select btn" (change)="changeGame($event)" formControlName="game" width="auto">
+                <option value="" selected disabled hidden>Choose your game</option>
+                <option *ngFor="let game of Games; let i = index" value="{{i}}">{{game.name}}</option>
+              </select>
+            </div>
           
             <span class="text-danger" *ngIf="(game.dirty || game.touched) && game.invalid && game.errors.required">
               Game is required.

@@ -35,6 +35,7 @@ export class CreateRoomComponent implements OnInit {
   Style: String[] = ['Casual', 'Hybrid', 'Serious'];
 
   expanded: boolean;
+  search: boolean;
   createdRoom: number;
   isLoaded: boolean;
 
@@ -56,6 +57,7 @@ export class CreateRoomComponent implements OnInit {
   ngOnInit(): void {
     this.isLoaded = false;
     this.expanded = false;
+    this.search = false;
     // @ts-ignore
     this.user$ = this.storage.get<User>('currentUser');
     this.user$.subscribe(

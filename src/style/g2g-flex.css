@@ -3,4 +3,10 @@
       -ms-flex: 1;
           flex: 1;
 }
+
+.g2g-flex-static {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+}
 /*# sourceMappingURL=g2g-flex.css.map */

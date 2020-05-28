@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "mappings": "AAAA,AAAA,cAAc,CAAA;EACV,IAAI,EAAE,CAAC;CACV",
+    "mappings": "AAAA,AAAA,cAAc,CAAA;EACV,IAAI,EAAE,CAAC;CACV;;AAED,AAAA,gBAAgB,CAAA;EACZ,IAAI,EAAE,QAAQ;CACjB",
     "sources": [
         "g2g-flex.scss"
     ],
