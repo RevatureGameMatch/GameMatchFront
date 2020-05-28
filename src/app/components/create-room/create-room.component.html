@@ -18,10 +18,11 @@
   </div>
 
   <div *ngIf="expanded == false" class="text-center text-light">
-    <div class="d-flex flex-wrap justify-content-center m-3">
+    <div class="justify-content-center m-3">
       <div *ngIf="search == true">
         <div id="searchTable" class="align-content-start">
-          <button type="button" class="btn btn-group-primary game-button">Room Form</button>
+          <button id="room-button" type="button" (click)="search = false" class="btn btn-primary">Return to form</button>
+          
           <div class="input-group">
             <input type="text" class="form-control border-right-0 border" [(ngModel)]="searchText" placeholder="Search games...">
             <div class="input-group-append">
@@ -66,7 +67,7 @@
           <div class="form-group" size="45">
             <label class="text-light" for="game">Game:</label><br/>
             <div class="btn-group d-flex">
-              <button type="button" class="btn btn-group-primary" (click)="search = true"><fa-icon [icon]="faListAlt"></fa-icon></button>
+              <button type="button" class="btn btn-light" (click)="search = true"><fa-icon [icon]="faListAlt"></fa-icon></button>
               <select class="custom-select game-options-select btn" (change)="changeGame($event)" formControlName="game" width="auto">
                 <option value="" selected disabled hidden>Choose your game</option>
                 <option *ngFor="let game of Games; let i = index" value="{{i}}">{{game.name}}</option>
