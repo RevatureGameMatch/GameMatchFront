@@ -21,6 +21,7 @@ import { PlaystyleComponent } from './components/playstyle/playstyle.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProfileComponent } from './components/profile/profile.component';
 import { SpaceToUnderScorePipe } from './components/surveys/space-to-under-score.pipe';
+import { AboutDevComponent } from './components/about-dev/about-dev.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { SpaceToUnderScorePipe } from './components/surveys/space-to-under-score
     PlaystyleComponent,
     ProfileComponent,
     SpaceToUnderScorePipe,
+    AboutDevComponent,
 
   ],
   imports: [

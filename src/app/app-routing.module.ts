@@ -13,6 +13,8 @@ import { SupportedGamesComponent } from './components/supported-games/supported-
 import { JoinRoomComponent } from './components/join-room/join-room.component';
 import { PlaystyleComponent } from './components/playstyle/playstyle.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { AboutDevComponent } from './components/about-dev/about-dev.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -33,6 +35,7 @@ const routes: Routes = [
   { path: 'supported-games', component: SupportedGamesComponent },
   { path: 'room/id', component: JoinRoomComponent },
   { path: 'profile', component: ProfileComponent },
+  { path: 'about-dev', component: AboutDevComponent},
 ]
 
 @NgModule({
