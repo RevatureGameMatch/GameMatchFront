@@ -1,41 +1,41 @@
-<div class="d-flex flex-wrap justify-content-center">
+<div class="d-flex flex-column justify-content-center">
 
-
-<div class="justify-content-center m-3">
-    <div class="card mb-3" style="max-width: 540px;">
-        <div class="row no-gutters">
-        <div class="col-md-4">
-            <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" class="card-img" alt="...">
-        </div>
-        <div class="col-md-8">
-            <div class="card-body">
-            <h2 class="card-title">John Doe</h2>
-            <h6 class="card-subtitle mb-2 text-muted italic">Lead Developer</h6>
-            <p class="card-text">JohnDoe@email.com</p>
-            <div><fa-icon [icon]="faLinkedin"></fa-icon><fa-icon [icon]="faGithubSquare"></fa-icon><fa-icon [icon]="faEllipsisH"></fa-icon></div>
-            <p class="card-text"><small class="text-muted">Last updated {{ CurrentDate | date:'MM/dd/yyyy'}}</small></p>
-            </div>
-        </div>
+    <div class="justify-content-center row mt-3">
+        <div>
+          <h1>About the Developers</h1>
+          <hr>
         </div>
     </div>
-</div>
 
-
-<div class="justify-content-center m-3">
-    <div class="card mb-3" style="max-width: 540px;">
-        <div class="row no-gutters">
-        <div class="col-md-4">
-            <img src="..." class="card-img" alt="...">
-        </div>
-        <div class="col-md-8">
-            <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            <p class="card-text"><small class="text-muted">Last updated {{ CurrentDate | date:'MM/dd/yyyy'}}</small></p>
+    <div class="justify-content-center d-flex m-3">
+        <div class="card mb-3" style="max-width: 540px;">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" class="card-img" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h2 class="card-title">John Doe
+                            <span class="position">
+                                <h5 class="card-subtitle mb-2 text-muted italic">Lead Developer</h5>
+                            </span>
+                        </h2>
+                        <p>John.Doe@email.com</p>
+                        <div class="icons">
+                            <span class = "icon">
+                                <fa-icon [icon]="faLinkedin"></fa-icon>
+                            </span>
+                            <span class = "icon">
+                                <fa-icon [icon]="faGithubSquare"></fa-icon>
+                            </span>
+                            <span class = "icon">
+                                <fa-icon [icon]="faEllipsisH"></fa-icon>
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        </div>
     </div>
-</div>
 
 </div>

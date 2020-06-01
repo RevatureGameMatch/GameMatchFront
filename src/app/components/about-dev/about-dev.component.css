@@ -4,9 +4,42 @@
 }
 
 p {
-    margin-top: 10px;
+    margin-top: 1px;
+    margin-bottom: 35px;
 }
 
 .card-img {
     height: 100%;
+}
+
+.card-title{
+    margin-bottom: 1.5px;
+}
+
+.icons {
+    float: right;
+}
+
+.icon {
+    padding-right: 10px;
+}
+
+fa-icon{
+    font-size: 30px;
+}
+
+.update {
+    text-align: right;
+}
+
+h2 {
+    display: inline;
+}
+
+.position {
+    float:right;
+}
+
+h5 {
+    display: inline-block;
 }
