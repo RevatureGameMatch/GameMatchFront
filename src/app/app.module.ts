@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {FilterPipe} from './components/create-room/filter.pipe'
+import {MatDialogModule} from '@angular/material/dialog';
 
 import { AppComponent } from './app.component';
 import { AboutG2GComponent } from './components/about-g2-g/about-g2-g.component';
@@ -22,6 +23,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProfileComponent } from './components/profile/profile.component';
 import { SpaceToUnderScorePipe } from './components/surveys/space-to-under-score.pipe';
 import { AboutDevComponent } from './components/about-dev/about-dev.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,8 @@ import { AboutDevComponent } from './components/about-dev/about-dev.component';
     FormsModule,
     ReactiveFormsModule,
     FontAwesomeModule,
+    BrowserAnimationsModule,
+    MatDialogModule
 
   ],
   providers: [],

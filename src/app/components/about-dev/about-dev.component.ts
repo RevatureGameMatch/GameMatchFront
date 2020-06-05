@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { faLinkedin, faGithubSquare } from '@fortawesome/free-brands-svg-icons';
 import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
+import {MatDialog} from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
 
 @Component({
   selector: 'app-about-dev',
@@ -13,10 +15,31 @@ export class AboutDevComponent implements OnInit {
   faGithubSquare = faGithubSquare;
   faEllipsisH = faEllipsisH;
 
-  constructor() { }
+  constructor(private dialog: MatDialog) { }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(AboutDevModalComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 
   ngOnInit(): void {
     this.CurrentDate = new Date();
   }
 
 }
+
+@Component({
+  selector: 'app-about-dev-modal',
+  templateUrl: 'about-dev-modal.component.html',
+})
+export class AboutDevModalComponent{
+  constructor(private dialog: MatDialog) { }
+
+  closeDialog(){
+   this.dialog.closeAll();
+  }
+}
+
